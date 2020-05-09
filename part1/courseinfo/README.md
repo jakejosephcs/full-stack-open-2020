@@ -30,7 +30,7 @@ const Content = ... {
 }
 ```
 
-## Exercises 1.3.-1.5. [LINK to exercises](https://fullstackopen.com/en/part1/java_script#exercises-1-3-1-5)
+# Exercises 1.3.-1.5. [LINK to exercises](https://fullstackopen.com/en/part1/java_script#exercises-1-3-1-5)
 
 ## 1.3: course information step3
 Modify the variable definitions of the App component as follows and also refactor the application so that it still works:
