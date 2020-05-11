@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
+const Statistic = (props) => <p>{props.text}: {props.value} {props.sign}</p>
+
 const Statistics = (props) => {
   if (props.all === 0) {
     return(
@@ -12,12 +14,12 @@ const Statistics = (props) => {
 
   return (
     <>
-      <p>Good: {props.good}</p>
-      <p>Neutral: {props.neutral}</p>
-      <p>Bad: {props.bad}</p>
-      <p>All: {props.all}</p>
-      <p>Average: {props.average}</p>
-      <p>Positive: {props.positive} {props.sign}</p>
+      <Statistic text="Good" value={props.good} />
+      <Statistic text="Neutral" value={props.neutral} />
+      <Statistic text="Bad" value={props.bad} />
+      <Statistic text="All" value={props.all} />
+      <Statistic text="Average" value={props.average} />
+      <Statistic text="Positive" value={props.positive} sign="%" />
     </>
   )
 } 

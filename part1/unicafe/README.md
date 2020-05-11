@@ -20,3 +20,9 @@ Refactor your application so that displaying the statistics is extracted into it
 ## 1.9: unicafe step4
 Change your application to display statistics only once feedback has been gathered.
 ![New give feedback UI](https://fullstackopen.com/static/b453d7533ae85dcaf3eccf342a353c58/14be6/15e.png)
+
+## 1.10: unicafe step5
+1.10: unicafe step5
+Let's continue refactoring the application. Extract the following two components:
+⋅⋅* Button for defining the buttons used for submitting feedback
+⋅⋅* Statistic for displaying a single statistic, e.g. the average score.
