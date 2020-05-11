@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
+const Statistics = ({text, value, sign}) =>  <p>{text}: {value} {sign}</p>
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -21,12 +23,12 @@ const App = () => {
       <Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
       <Button text="bad" onClick={() => setBad(bad + 1)} />
       <h1>Statistics</h1>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>All: {total}</p>
-      <p>Average: {average}</p>
-      <p>Positive: {positiveFeedback} %</p>
+      <Statistics text="good" value={good}/>
+      <Statistics text="neutral" value={neutral}/>
+      <Statistics text="bad" value={bad}/>
+      <Statistics text="all" value={total}/>
+      <Statistics text="average" value={average}/>
+      <Statistics text="positive" value={positiveFeedback} sign="%"/>
     </div>
   )
 }
