@@ -3,24 +3,37 @@ import ReactDOM from 'react-dom';
 
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
-const Statistic = (props) => <p>{props.text}: {props.value} {props.sign}</p>
+const Statistic = (props) => {
+  return (
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value} {props.sign}</td>
+    </tr>
+  )
+}
 
 const Statistics = (props) => {
   if (props.all === 0) {
     return(
-      <p>No Feedback Given</p>
+      <tbody>
+        <tr>
+          <td>
+            No Feedback Given
+          </td>
+        </tr>
+      </tbody>
     )
   }
 
   return (
-    <>
+    <tbody>
       <Statistic text="Good" value={props.good} />
       <Statistic text="Neutral" value={props.neutral} />
       <Statistic text="Bad" value={props.bad} />
       <Statistic text="All" value={props.all} />
       <Statistic text="Average" value={props.average} />
       <Statistic text="Positive" value={props.positive} sign="%" />
-    </>
+    </tbody>
   )
 } 
 
@@ -32,7 +45,7 @@ const App = () => {
   const all = good + neutral + bad
   const average = (good - bad)/all
 
-  const positive = (good/all)*100
+  const positive = ((good/all)*100).toFixed(1)
 
 
   return (
@@ -41,8 +54,14 @@ const App = () => {
       <Button text="good" onClick={() => setGood(good + 1)} />
       <Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
       <Button text="bad" onClick={() => setBad(bad + 1)} />
-      <h1>Statistics</h1>
-      <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} sign="%"/>
+      <table>
+        <thead>
+          <tr>
+            <th>Statistics</th>
+          </tr>
+        </thead>
+        <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} sign="%"/>
+      </table>
     </div>
   )
 }
