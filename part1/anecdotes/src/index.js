@@ -19,27 +19,58 @@ const App = (props) => {
       votes: selected.votes + 1,
       text: selected.text
     }
-    incrementVote(selected.text)
+    incrementVote(newVotes.text)
     setSelected(newVotes)
   }
 
   const incrementVote = (text) => voteArray[anecdotes.indexOf(anecdotes[text])] += 1
 
-  const displayVote = (text) =>  voteArray[anecdotes.indexOf(anecdotes[text])]
+  const displayVote = (text) =>  voteArray[anecdotes.indexOf(anecdotes[selected.text])]
 
+  const maxVotes = () => Math.max(...voteArray);
+
+  const anecdoteWithMostVotes = () => anecdotes[voteArray.indexOf(maxVotes())]
   return (
     <div>
-      <Display text={anecdotes[selected.text]} votes={displayVote(selected.text)} />
       <div>
-        <Button text="next anecdote" onclick={newAnecdote} />
-        <Button text="vote" onclick={voteForAnecdote} />
+        <h1>Anecdote of the day</h1>
+        <DisplayAnecdoteOfTheDay text={anecdotes[selected.text]} votes={displayVote()} />
+        <div>
+          <Button text="next anecdote" onclick={newAnecdote} />
+          <Button text="vote" onclick={voteForAnecdote} />
+        </div>
+      </div>
+      <div>
+        <h1>Anecdote with the most votes</h1>
+        <DisplayAnecdoteWithMostVotes text={anecdoteWithMostVotes()} votes={maxVotes()} />
       </div>
     </div>
   )
 }
 
-const Display = (props) => {
+const DisplayAnecdoteOfTheDay = (props) => {
   return (
+    <>
+      <div>
+        {props.text} 
+      </div>
+      <div>
+        has {props.votes} votes
+      </div>
+    </>
+  )
+}
+
+const DisplayAnecdoteWithMostVotes = (props) => {
+  if (props.votes === 0) {
+    return (
+      <div>
+        None yet
+      </div>
+    )
+  }
+
+  return(
     <>
       <div>
         {props.text} 

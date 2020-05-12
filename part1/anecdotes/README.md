@@ -42,3 +42,10 @@ Your finished application could look something like this:
 Expand your application so that you can vote for the displayed anecdote.
 
 > ![Give feedback UI](https://fullstackopen.com/static/06f95cb43a18bd6429174200a8d17cff/14be6/19a.png)
+
+## 1.14*: anecdotes step3
+Now implement the final version of the application that displays the anecdote with the largest number of votes:
+
+> ![Give feedback UI](https://fullstackopen.com/static/3e8638efbbbbcabac7bb79466ab3a5f6/14be6/20a.png)
+
+If multiple anecdotes are tied for first place it is sufficient to just show one of them.
