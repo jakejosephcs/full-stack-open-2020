@@ -37,3 +37,8 @@ ReactDOM.render(
 Your finished application could look something like this:
 
 > ![Give feedback UI](https://fullstackopen.com/static/8577fa00fc4d946e2322de9b2707c89c/14be6/18a.png)
+
+## 1.13*: anecdotes step2
+Expand your application so that you can vote for the displayed anecdote.
+
+> ![Give feedback UI](https://fullstackopen.com/static/06f95cb43a18bd6429174200a8d17cff/14be6/19a.png)
