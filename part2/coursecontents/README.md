@@ -90,3 +90,5 @@ The application can, for example, look like this:
 
 > ![Half stack app](https://fullstackopen.com/static/8c1ce3363ec056cd15c5edacbeec3370/14be6/10e.png)
 
+## 2.5: separate module
+Declare the Course component as a separate module, which is imported by the App component. You can include all subcomponents of the course into the same module.
