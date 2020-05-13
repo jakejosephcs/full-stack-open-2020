@@ -19,3 +19,8 @@ The rendered page can, for example, look as follows:
 > ![Half stack app](https://fullstackopen.com/static/6e12df59c1c9e28c39ebdbe1b41ccf97/14be6/8e.png)
 
 The application must work regardless of the number of parts a course has, so make sure the application works if you add or remove parts of a course.
+
+## 2.2: Course contents step7
+Show also the sum of the exercises of the course.
+
+> ![Half stack app](https://fullstackopen.com/static/2d8aa950189db6cf2eeb794181429ae9/14be6/9e.png)
