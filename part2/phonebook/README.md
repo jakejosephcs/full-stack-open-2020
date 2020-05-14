@@ -50,3 +50,8 @@ Issue a warning with the alert command when such an action is attempted:
 Expand your application by allowing users to add phone numbers to the phone book:
 
 > ![2.8 finished](https://fullstackopen.com/static/3068a34af61692773a06d60ee93638a9/14be6/12e.png)
+
+## 2.9*: The Phonebook Step4
+Implement a search field that can be used to filter the list of people by name:
+
+> ![2.9 finished](https://fullstackopen.com/static/4b5897029d4c9e2eb61631ca4c1a4f24/14be6/13e.png)
