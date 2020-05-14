@@ -38,3 +38,15 @@ export default App
 After finishing this exercise your application should look something like this:
 
 > ![2.6 finished](https://fullstackopen.com/static/501199c4a6d7a5702a7bdf31998d5a1d/14be6/10e.png)
+
+
+## 2.7: The Phonebook Step2
+Prevent the user from being able to add names that already exist in the phonebook. 
+Issue a warning with the alert command when such an action is attempted:
+
+> ![2.7 finished](https://fullstackopen.com/static/d5be58590c1460090cb1c87adf201886/14be6/11e.png)
+
+## 2.8: The Phonebook Step3
+Expand your application by allowing users to add phone numbers to the phone book:
+
+> ![2.8 finished](https://fullstackopen.com/static/3068a34af61692773a06d60ee93638a9/14be6/12e.png)
