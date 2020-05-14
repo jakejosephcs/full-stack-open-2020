@@ -55,3 +55,6 @@ Expand your application by allowing users to add phone numbers to the phone book
 Implement a search field that can be used to filter the list of people by name:
 
 > ![2.9 finished](https://fullstackopen.com/static/4b5897029d4c9e2eb61631ca4c1a4f24/14be6/13e.png)
+
+## 2.10: The Phonebook Step5
+If you have implemented your application in a single component, refactor it by extracting suitable parts into new components. 
