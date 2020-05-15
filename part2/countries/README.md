@@ -1,68 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Exercises 2.12.-2.14. [LINK to exercises](https://fullstackopen.com/en/part2/getting_data_from_server#exercises-2-11-2-14)
 
-## Available Scripts
+## 2.12* Data for countries, Step1
 
-In the project directory, you can run:
+The API https://restcountries.eu provides a data for different countries in a machine readable format, a so-called REST API.
 
-### `npm start`
+Create an application, in which one can look at data of various countries
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The user interface is very simple. The country to be shown is found by typing a search query into the search field.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+If there are too many (over 10) countries that match the query, then the user is prompted to make their query more specific:
 
-### `npm test`
+> ![2.12 too many matches](https://fullstackopen.com/static/d8a3e3b3af8907d0c3dd495ef0d26ba6/14be6/19b1.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If there are ten or fewer countries, but more than one, then all countries matching the query are shown:
 
-### `npm run build`
+> ![2.12 matches](https://fullstackopen.com/static/1d4ebf199806ccfe0df529c08e2a0c6d/14be6/19b2.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When there is only one country matching the query, then the basic data of the country, its flag and the languages spoken there, are shown:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+> ![2.12 matches](https://fullstackopen.com/static/1d4bba516fb538c5214f37c4a2ab0f8e/14be6/19b3.png)
