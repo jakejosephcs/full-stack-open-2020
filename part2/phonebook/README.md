@@ -58,3 +58,5 @@ Implement a search field that can be used to filter the list of people by name:
 
 ## 2.10: The Phonebook Step5
 If you have implemented your application in a single component, refactor it by extracting suitable parts into new components. 
+
+# Exercises 2.11.-2.14 [LINK to exercises](https://fullstackopen.com/en/part2/getting_data_from_server#exercises-2-11-2-14)
