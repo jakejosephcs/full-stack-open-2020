@@ -77,3 +77,8 @@ Extract the code that handles the communication with the backend into its own mo
 Make it possible for users to delete entries from the phonebook. The deletion can be done through a dedicated button for each person in the phonebook list. You can confirm the action from the user by using the window.confirm method:
 
 > ![2.17 finished](https://fullstackopen.com/static/591ebc9e0e2dc651c0d2877efd763a59/14be6/24e.png)
+
+## 2.18*: Phonebook step10
+Change the functionality so that if a number is added to an already existing user, the new number will replace the old number.
+
+> ![2.18 finished](https://fullstackopen.com/static/7353398520426bd823cf92202767653f/14be6/16e.png)
