@@ -25,7 +25,11 @@ When there is only one country matching the query, then the basic data of the co
 ## 2.13*: Data for countries, step2
 Improve on the application in the previous exercise, such that when the names of multiple countries are shown on the page there is a button next to the name of the country, which when pressed shows the view for that country:
 
-> ![2.12 Data for Countries](https://fullstackopen.com/static/b8986829d36bd14bbbd6270e0e8d2edf/14be6/19b4.png)
+> ![2.13 Data for Countries](https://fullstackopen.com/static/b8986829d36bd14bbbd6270e0e8d2edf/14be6/19b4.png)
 
 In this exercise it is also enough that your application works for most of the countries. Countries whose name appears in the name of another country, like Sudan, can be ignored.
 
+## 2.14*: Data for countries, step3
+Add to the view showing the data of a single country, the weather report for the capital of that country. There are dozens of providers for weather data, like https://weatherstack.com/
+
+> ![2.13 Data for Countries](https://fullstackopen.com/static/55e0007d51bf9506697001f03860a4d9/14be6/19ba.png)

@@ -6,6 +6,12 @@ const App = () => {
     const [ searchCountry, setSearchCountry ] = useState("")
     const [ filteredCountries, setFilteredCountries ] = useState([]) 
     const [ displayText, setDisplayText ] = useState([])
+    const [ grabCapital, setGrabCapital ] = useState("Canada")
+    const [ weatherOfCapital, setWeatherOfCapital ] = useState("")
+    const [ capitalWeatherIcon, setCapitalWeatherIcon ] = useState("")
+    const [ capitalWindSpeedDirection, setCapitalWindSpeedDirection] = useState("")
+
+    const api_key = process.env.REACT_APP_API_KEY
 
     useEffect(() => {
         axios
@@ -15,15 +21,16 @@ const App = () => {
             })
     }, []);
 
-    const handleSetSearchCountry = (e) => {
-        setSearchCountry(e.target.value)
-    }
+    useEffect(() => {
+        axios
+            .get(`http://api.weatherstack.com/current?access_key=${api_key}&query=${grabCapital}`)
+            .then(response => {
+                setWeatherOfCapital(response.data.current.temperature)
+                setCapitalWeatherIcon(response.data.current.weather_icons[0])
+                setCapitalWindSpeedDirection(`${response.data.current.wind_speed} mph direction ${response.data.current.wind_dir}`)
+            })
+    }, [grabCapital, api_key])
 
-    const handleShowCountry = (e) => {
-        const result = filteredCountries.filter(place => place.name === e.target.value)
-
-        displayCountryInfo(result[0]) 
-    } 
 
     useEffect(() => {
         setFilteredCountries(country.filter(place => place.name.toLowerCase().includes(searchCountry.toLowerCase())))
@@ -39,6 +46,15 @@ const App = () => {
         }
     }, [filteredCountries])
 
+    const handleSetSearchCountry = (e) => {
+        setSearchCountry(e.target.value)
+    }
+
+    const handleShowCountry = (e) => {
+        const result = filteredCountries.filter(place => place.name === e.target.value)
+        result.map(place =>  displayCountryInfo(place))
+    } 
+
     const displayCountryNameOnly = (listOfCountries) => {
         const result = listOfCountries.map(location => 
             (
@@ -52,6 +68,7 @@ const App = () => {
     }
 
     const displayCountryInfo = (place) => {
+        setGrabCapital(place.name)
         setDisplayText([
             <div key={place.name}>
                 <h1>{place.name}</h1>
@@ -63,12 +80,14 @@ const App = () => {
                 </ul>
                 <img src={place.flag} alt={place.name} width="200px"/>
                 <h2>Weather in {place.capital}</h2>
-                <p>Temperature: 5 Celcius</p>
-                <p>Wind: 26 mph direcion SSW</p>
+                <p>Temperature: {weatherOfCapital} Celcius</p>
+                <img src={capitalWeatherIcon} alt="weather"></img>
+                <p>Wind: {capitalWindSpeedDirection}</p>
             </div>
         ])
     }
 
+        
     return(
         <>
             <div>
