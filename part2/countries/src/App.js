@@ -3,8 +3,9 @@ import axios from 'axios'
 
 const App = () => {
     const [ country, setCountry ] = useState([])
-    const [ newCountry, setNewCountry] = useState("")
-    const [ filteredCountry, setFilteredCountry ] = useState([])
+    const [ searchCountry, setSearchCountry ] = useState("")
+    const [ filteredCountries, setFilteredCountries ] = useState([]) 
+    const [ displayText, setDisplayText ] = useState([])
 
     useEffect(() => {
         axios
@@ -14,51 +15,70 @@ const App = () => {
             })
     }, []);
 
-    useEffect(() => {
-        const results = country.filter(place => place.name.toLowerCase().includes(newCountry.toLowerCase()));
-        setFilteredCountry(results)
-    }, [newCountry, country]);
-
-    const handleNewCountry = (event) => {
-        setNewCountry(event.target.value)
+    const handleSetSearchCountry = (e) => {
+        setSearchCountry(e.target.value)
     }
 
-    const countryToShow = (list) => {
-        if (list.length > 1 && list.length <= 10) {
-            return(
-                list.map(item => <p key={item.name}>{item.name}</p>)
-            )
-        } else if (list.length > 10) {
-            return (
-                <div>
-                    <p>Too many matches, please be more specific</p>
+    const handleShowCountry = (e) => {
+        const result = filteredCountries.filter(place => place.name === e.target.value)
+
+        console.log(result) 
+    } 
+
+    useEffect(() => {
+        setFilteredCountries(country.filter(place => place.name.toLowerCase().includes(searchCountry.toLowerCase())))
+    }, [searchCountry, country])
+
+    useEffect(() => {
+        if (filteredCountries.length > 10) {
+            setDisplayText("Too many matches, please narrow your search")
+        } else if (filteredCountries.length > 1 && filteredCountries.length <= 10) {
+            displayCountryNameOnly(filteredCountries)
+        } else {
+            filteredCountries.map(place => displayCountryInfo(place))
+        }
+    }, [filteredCountries])
+
+    const displayCountryNameOnly = (listOfCountries) => {
+        const result = listOfCountries.map(location => 
+            (
+                <div key={location.name}>
+                    <p>{location.name}</p>
+                    <button value={location.name} onClick={handleShowCountry}>Show</button>
                 </div>
             )
-        } else {
-            return (
-                list.map( country =>
-                    <div key={country.population}>
-                        <h1>{country.name}</h1>
-                        <p>Capital: {country.capital}</p>
-                        <p>Population: {country.population}</p>
-                        <h2>Languages</h2>
-                        <ul>
-                            {country.languages.map(language =>
-                                <li key={language.name}>{language.name}</li>
-                            )}
-                        </ul>
-                        <img src={country.flag} alt="Country flag" width="200px"/>
-                    </div>
-                )
-            )
-        }
+        )
+        setDisplayText(result)
+    }
+
+    const displayCountryInfo = (place) => {
+        setDisplayText([
+            <div key={place.name}>
+                <h1>{place.name}</h1>
+                <p>Capital: {place.capital}</p>
+                <p>Population: {place.population}</p>
+                <h2>Spoken Languages</h2>
+                <ul>
+                    {place.languages.map(language => <li key={language.name}>{language.name}</li>)}
+                </ul>
+                <img src={place.flag} alt={place.name} width="200px"/>
+                <h2>Weather in {place.capital}</h2>
+                <p>Temperature: 5 Celcius</p>
+                <p>Wind: 26 mph direcion SSW</p>
+            </div>
+        ])
     }
 
     return(
-        <div>
-            <input value={newCountry} onChange={handleNewCountry} placeholder="Enter a country name"/>
-            {countryToShow(filteredCountry)}
-        </div>
+        <>
+            <div>
+                <input type="text" placeholder="Enter Country Name..." onChange={handleSetSearchCountry}/>
+            </div>
+            <div>
+                {displayText}
+            </div>
+        </>
+
     )
 }
 
