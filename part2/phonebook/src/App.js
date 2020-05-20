@@ -11,11 +11,9 @@ const App = () => {
     const [ filterPerson, setFilterPerson] = useState('')
 
     useEffect(() => {
-        console.log('effect')
         axios
             .get('http://localhost:3001/persons')
             .then(response => {
-                console.log('promise fulfilled')
                 setPersons(response.data)
             })
     },[]);
@@ -29,9 +27,15 @@ const App = () => {
                 name: newName,
                 number: newNumber
             }
-            setPersons(persons.concat(personObject))
-            setNewName("")
-            setNewNumber("")
+            axios
+                .post("http://localhost:3001/persons", personObject)
+                .then(
+                    response => {
+                        setPersons(persons.concat(response.data))
+                        setNewName("")
+                        setNewNumber("")
+                    }
+                )
         }
     }
 

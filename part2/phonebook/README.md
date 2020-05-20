@@ -1,5 +1,9 @@
 # Exercises 2.6.-2.10. [LINK to exercises](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10)
 
+# Exercises 2.11 [LINK to exercises](https://fullstackopen.com/en/part2/getting_data_from_server#exercises-2-11-2-14)
+
+# Exercises 2.15.-2.18 [LINK to exercises](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-15-2-18)
+
 ## 2.6: The Phonebook Step1
 Let's create a simple phonebook. In this part we will only be adding names to the phonebook.
 
@@ -59,4 +63,9 @@ Implement a search field that can be used to filter the list of people by name:
 ## 2.10: The Phonebook Step5
 If you have implemented your application in a single component, refactor it by extracting suitable parts into new components. 
 
-# Exercises 2.11.-2.14 [LINK to exercises](https://fullstackopen.com/en/part2/getting_data_from_server#exercises-2-11-2-14)
+## 2.11: The Phonebook Step6
+We continue with developing the phonebook. Store the initial state of the application in the file db.json.
+Modify the application such that the initial state of the data is fetched from the server using the axios-library. Complete the fetching with an Effect hook.
+
+## 2.15: Phonebook step7
+Currently the numbers that are added to the phonebook are not saved to a backend server. Fix this situation.
