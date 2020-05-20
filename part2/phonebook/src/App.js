@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
@@ -51,6 +50,13 @@ const App = () => {
         setFilterPerson(event.target.value)
     }
 
+    const handleDeletePerson = (e) => {
+        if (window.confirm("Confirm to delete")) {
+            PersonsServices.deletePerson(e.target.value)
+            window.location.reload();
+        }
+    }
+
 
     return (
         <div>
@@ -62,7 +68,7 @@ const App = () => {
                 numberValue={newNumber} numberOnChange={handleNumberChange}
             />
             <h2>Numbers</h2>
-            <Persons filterPerson={filterPerson} persons={persons} />
+            <Persons filterPerson={filterPerson} persons={persons} deletePerson={handleDeletePerson} />
         </div>
     )
 }
