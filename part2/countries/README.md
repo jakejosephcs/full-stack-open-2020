@@ -28,3 +28,4 @@ Improve on the application in the previous exercise, such that when the names of
 > ![2.12 Data for Countries](https://fullstackopen.com/static/b8986829d36bd14bbbd6270e0e8d2edf/14be6/19b4.png)
 
 In this exercise it is also enough that your application works for most of the countries. Countries whose name appears in the name of another country, like Sudan, can be ignored.
+

@@ -22,7 +22,7 @@ const App = () => {
     const handleShowCountry = (e) => {
         const result = filteredCountries.filter(place => place.name === e.target.value)
 
-        console.log(result) 
+        displayCountryInfo(result[0]) 
     } 
 
     useEffect(() => {
