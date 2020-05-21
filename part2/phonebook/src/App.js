@@ -75,12 +75,23 @@ const App = () => {
     const handleDeletePerson = (e) => {
         const personName = persons.filter(person => person.id.toString() === e.target.value.toString())
         if (window.confirm("Confirm to delete")) {
-            PersonsServices.deletePerson(e.target.value)
-            setMessage(`${personName[0].name} has been deleted from the list!`)
-            setTimeout(() => {
-                setMessage(null)
-                window.location.reload()
-            }, 2000)
+            PersonsServices
+                .deletePerson(e.target.value)
+                .then(response => {
+                    console.log("response fired: ", response)
+                    setMessage(`${personName[0].name} has been deleted from the list!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
+                })
+                .catch(error => {
+                    setMessage(`${personName[0].name} was already deleted`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
+                })
         }
     }
 

@@ -90,3 +90,12 @@ Change the functionality so that if a number is added to an already existing use
 Show a notification that lasts for a few seconds after a successful operation is executed (a person is added or a number is changed):
 
 > ![2.19 finished](https://fullstackopen.com/static/da9af454f06489ca6e7453150beda738/14be6/27e.png)
+
+## 2.20*: Phonebook step12
+If you delete a person in browser 1 a short while before attempting to change the person's phone number in browser 2, you will get the following error message:
+
+> ![2.20 finished](https://fullstackopen.com/static/be832524a82a387fb3adddda37eaa149/14be6/29b.png)
+
+Fix the issue according to the example shown in promise and errors in part 2. Modify the example so that the user is shown a message when the operation does not succeed. 
+
+> ![2.20.1 finished](https://fullstackopen.com/static/dfc66f03514b3f013cf19ba1339ba34f/14be6/28e.png)
