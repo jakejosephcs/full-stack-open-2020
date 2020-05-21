@@ -3,12 +3,14 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import PersonsServices from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
     const [ persons, setPersons ] = useState([]) 
     const [ newName, setNewName ] = useState('')
     const [ newNumber, setNewNumber] = useState('')
     const [ filterPerson, setFilterPerson] = useState('')
+    const [ message, setMessage ] = useState(null)
 
     useEffect(() => {
         PersonsServices
@@ -24,14 +26,18 @@ const App = () => {
             if(window.confirm(`${newName} is already in the Phonebook, replace the old number with a new one?`)) {
                 const result = persons.filter(person => person.name === newName)
                 const updatedPerson = {...result[0], number: newNumber}
+                setMessage(`${updatedPerson.name}'s number has been updated!`)
                 PersonsServices
                     .updatePerson(updatedPerson.id, updatedPerson)
                     .then(
                         response => {
                             setPersons(persons.map(person => person.id !== response.id ? person : response.data))
+                            setTimeout(() => {
+                                setMessage(null)
+                                window.location.reload()
+                            }, 2000)
                         }
                     )
-                window.location.reload();
             }
         } else {
             const personObject = {
@@ -45,6 +51,11 @@ const App = () => {
                     setPersons(persons.concat(response.data))
                     setNewName("")
                     setNewNumber("")
+                    setMessage(`${response.data.name} has been added to the list!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
                 })
         }
     }
@@ -62,16 +73,22 @@ const App = () => {
     }
 
     const handleDeletePerson = (e) => {
+        const personName = persons.filter(person => person.id.toString() === e.target.value.toString())
         if (window.confirm("Confirm to delete")) {
             PersonsServices.deletePerson(e.target.value)
-            window.location.reload();
+            setMessage(`${personName[0].name} has been deleted from the list!`)
+            setTimeout(() => {
+                setMessage(null)
+                window.location.reload()
+            }, 2000)
         }
     }
 
 
     return (
         <div>
-            <h2>Phonebook</h2>
+            <h1>Phonebook</h1>
+            <Notification message={message} />
             <Filter value={filterPerson} onChange={handleFilterChange} />
             <h2>Add a New Entry</h2>
             <PersonForm 

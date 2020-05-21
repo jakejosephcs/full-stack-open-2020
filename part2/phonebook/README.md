@@ -4,6 +4,9 @@
 
 # Exercises 2.15.-2.18 [LINK to exercises](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-15-2-18)
 
+# Exercises 2.19.-2.20 [LINK to exercises](https://fullstackopen.com/en/part2/adding_styles_to_react_app#exercises-2-19-2-20)
+
+
 ## 2.6: The Phonebook Step1
 Let's create a simple phonebook. In this part we will only be adding names to the phonebook.
 
@@ -82,3 +85,8 @@ Make it possible for users to delete entries from the phonebook. The deletion ca
 Change the functionality so that if a number is added to an already existing user, the new number will replace the old number.
 
 > ![2.18 finished](https://fullstackopen.com/static/7353398520426bd823cf92202767653f/14be6/16e.png)
+
+## 2.19: Phonebook step11
+Show a notification that lasts for a few seconds after a successful operation is executed (a person is added or a number is changed):
+
+> ![2.19 finished](https://fullstackopen.com/static/da9af454f06489ca6e7453150beda738/14be6/27e.png)
