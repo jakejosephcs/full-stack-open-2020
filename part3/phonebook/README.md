@@ -2,6 +2,8 @@
 
 # Exercises 3.7.-3.8. [LINK to exercises](https://fullstackopen.com/en/part3/node_js_and_express#exercises-3-7-3-8)
 
+# Exercises 3.9.-3.11. [LINK to exercises](https://fullstackopen.com/en/part3/deploying_app_to_internet#exercises-3-9-3-11)
+
 ## 3.1: Phonebook backend step1
 
 Implement a Node application that returns a hardcoded list of phonebook entries from the address http://localhost:3001/api/persons:
@@ -49,3 +51,7 @@ Add the [morgan](https://github.com/expressjs/morgan) middleware to your applica
 Configure morgan so that it also shows the data sent in HTTP POST requests:
 
 > ![3.8 finished](https://fullstackopen.com/static/4ed4b48465d48df517158501c0be187e/14be6/24.png)
+
+## 3.9 phonebook backend step9
+Make the backend work with the frontend from the previous part. Do not implement the functionality for making changes to the phone numbers yet, that will be implemented in exercise 3.17.
+
