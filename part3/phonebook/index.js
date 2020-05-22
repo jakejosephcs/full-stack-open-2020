@@ -5,7 +5,14 @@ const app = express()
 
 app.use(express.json())
 
-app.use(morgan('tiny'))
+morgan.token('body', (req, res, param) => { 
+    if(req.method !== 'POST') {
+        return `Not a post, a ${req.method}`
+    }
+    return JSON.stringify(req.body)
+})
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 let persons = [
     {
@@ -45,7 +52,6 @@ app.get('/notes', (request, response) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-    console.log(request.params.id)
     const id = Number(request.params.id)
     const person = persons.find(person => person.id === id)
 
