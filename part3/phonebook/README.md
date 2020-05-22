@@ -26,3 +26,7 @@ If an entry for the given id is not found, the server has to respond with the ap
 ## 3.4: Phonebook backend step4
 Implement functionality that makes it possible to delete a single phonebook entry by making an HTTP DELETE request to the unique URL of that phonebook entry.
 
+## 3.5: Phonebook backend step5
+Expand the backend so that new phonebook entries can be added by making HTTP POST requests to the address http://localhost:3001/api/persons.
+
+Generate a new id for the phonebook entry with the Math.random function. Use a big enough range for your random values so that the likelihood of creating duplicate id's is small.
