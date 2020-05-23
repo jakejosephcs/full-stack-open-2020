@@ -19,6 +19,55 @@ const App = () => {
                 setPersons(response.data)
             })
     },[]);
+    
+    const updatePerson = (id, personToUpdate) => {
+        PersonsServices
+            .updatePerson(id, personToUpdate)
+            .then(response => {
+                    setPersons(persons.map(person => person.id !== response.id ? person : response.data))
+                    setMessage(`${personToUpdate.name}'s number has been updated!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
+                }
+            )
+    }
+
+    const deletePerson = (personToDelete, personName) => {
+        PersonsServices
+                .deletePerson(personToDelete)
+                .then(response => {
+                    setMessage(`${personName[0].name} has been deleted from the list!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
+                })
+                .catch(error => {
+                    setMessage(`${personName[0].name} was already deleted`)
+                    setTimeout(() => {
+                        setMessage(null)
+                        window.location.reload()
+                    }, 2000)
+                })
+    }
+
+    const createPerson = (personToCreate) => {
+        PersonsServices
+            .create(personToCreate)
+            .then( response => {
+                setPersons(persons.concat(response.data))
+                setNewName("")
+                setNewNumber("")
+                setMessage(`${response.data.name} has been added to the list!`)
+                setTimeout(() => {
+                    setMessage(null)
+                    window.location.reload()
+                }, 2000)
+            })
+    }
+
 
     const addPerson = (event) => {
         event.preventDefault()
@@ -26,18 +75,7 @@ const App = () => {
             if(window.confirm(`${newName} is already in the Phonebook, replace the old number with a new one?`)) {
                 const result = persons.filter(person => person.name === newName)
                 const updatedPerson = {...result[0], number: newNumber}
-                setMessage(`${updatedPerson.name}'s number has been updated!`)
-                PersonsServices
-                    .updatePerson(updatedPerson.id, updatedPerson)
-                    .then(
-                        response => {
-                            setPersons(persons.map(person => person.id !== response.id ? person : response.data))
-                            setTimeout(() => {
-                                setMessage(null)
-                                window.location.reload()
-                            }, 2000)
-                        }
-                    )
+                updatePerson(updatedPerson.id, updatedPerson)
             }
         } else {
             const personObject = {
@@ -45,18 +83,7 @@ const App = () => {
                 number: newNumber
             }
 
-            PersonsServices
-                .create(personObject)
-                .then( response => {
-                    setPersons(persons.concat(response.data))
-                    setNewName("")
-                    setNewNumber("")
-                    setMessage(`${response.data.name} has been added to the list!`)
-                    setTimeout(() => {
-                        setMessage(null)
-                        window.location.reload()
-                    }, 2000)
-                })
+            createPerson(personObject)
         }
     }
 
@@ -75,23 +102,7 @@ const App = () => {
     const handleDeletePerson = (e) => {
         const personName = persons.filter(person => person.id.toString() === e.target.value.toString())
         if (window.confirm("Confirm to delete")) {
-            PersonsServices
-                .deletePerson(e.target.value)
-                .then(response => {
-                    console.log("response fired: ", response)
-                    setMessage(`${personName[0].name} has been deleted from the list!`)
-                    setTimeout(() => {
-                        setMessage(null)
-                        window.location.reload()
-                    }, 2000)
-                })
-                .catch(error => {
-                    setMessage(`${personName[0].name} was already deleted`)
-                    setTimeout(() => {
-                        setMessage(null)
-                        window.location.reload()
-                    }, 2000)
-                })
+            deletePerson(e.target.value, personName)
         }
     }
 

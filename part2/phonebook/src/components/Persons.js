@@ -5,7 +5,7 @@ const Persons = ({ filterPerson, persons, deletePerson }) => {
         <div>
             {persons.filter( person => 
                 person.name.toLowerCase().includes(filterPerson.toLowerCase())).map(person =>
-                    <div key={person.number}>
+                    <div key={person.name}>
                         <p>{person.name} {person.number}</p>
                         <button value={person.id} onClick={deletePerson}>Delete</button>
                     </div>
