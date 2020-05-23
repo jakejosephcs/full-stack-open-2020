@@ -55,3 +55,11 @@ Configure morgan so that it also shows the data sent in HTTP POST requests:
 ## 3.9 phonebook backend step9
 Make the backend work with the frontend from the previous part. Do not implement the functionality for making changes to the phone numbers yet, that will be implemented in exercise 3.17.
 
+## 3.10 phonebook backend step10
+Deploy the backend to the internet, for example to Heroku.
+
+Test the deployed backend with a browser and Postman or VS Code REST client to ensure it works.
+
+Create a README.md at the root of your repository, and add a link to your online application to it.
+
+

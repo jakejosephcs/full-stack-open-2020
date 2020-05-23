@@ -1,6 +1,6 @@
 const express = require('express')
-const app = express()
 const morgan = require('morgan')
+const app = express()
 const cors = require('cors')
 
 app.use(cors())
@@ -16,31 +16,58 @@ morgan.token('body', (req, res, param) => {
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
-let persons = [
-    {
-        name: "Arto Hellas",
-        number: "12",
-        id: 1
+let persons = [{
+        "name": "Arto Hellas",
+        "number": "040-123456",
+        "id": 1
     },
     {
-        name: "Ada Lovelaces",
-        number: "34",
-        id: 2
+        "name": "Ada Lovelace",
+        "number": "39-44-5323523",
+        "id": 2
     },
     {
-        name: "Dan Abramov",
-        number: "56",
-        id: 3
+        "name": "Dan Abramov",
+        "number": "12-43-234345",
+        "id": 3
     },
     {
-        name: "Mary Poppendieck",
-        number: "78",
-        id: 4
+        "name": "Mary Poppendieck",
+        "number": "39-23-6423122",
+        "id": 4
     }
 ]
 
-app.get('/api/persons', (request, response) => {
-    response.json(persons)
+const generateId = () => {
+    const id = parseInt(Math.random() * 100000000, 10)
+    return id
+}
+
+app.post('/api/persons', (request, response) => {
+    const body = request.body
+
+    if(!body.name || !body.number) {
+        return response.status(400).json({
+            error: 'name or number is missing'
+        })
+    }
+
+    if(!((persons.filter(personInList => personInList.name === body.name)).length === 0)) {
+        return response.status(400).json({
+            error: 'name already exisits'
+        })
+    }
+
+    const person = {
+        name: body.name,
+        number: body.number,
+        id: generateId(),
+    }
+
+
+    persons = persons.concat(person)
+
+    response.json(person)
 })
 
 app.get('/notes', (request, response) => {
@@ -51,6 +78,10 @@ app.get('/notes', (request, response) => {
         <p>Phonebook has info for ${personsLength} people</p>
         <p>${date}</p>
     `)
+})
+
+app.get('/api/persons', (request, response) => {
+    response.json(persons)
 })
 
 app.get('/api/persons/:id', (request, response) => {
@@ -73,35 +104,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-app.post('/api/persons', (request, response) => {
-    const body = request.body
-    const randomId = Math.random(10000)
-
-    if(!body.name || !body.number) {
-        return response.status(400).json({
-            error: 'name or number is missing'
-        })
-    }
-
-    if(!((persons.filter(personInList => personInList.name === body.name)).length === 0)) {
-        return response.status(400).json({
-            error: 'name already exisits'
-        })
-    }
-    
-    const person = {
-        name: body.name,
-        number: body.number,
-        id: randomId
-    }
-
-
-    persons = persons.concat(person)
-
-    response.json(person)
-})
-
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
