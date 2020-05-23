@@ -63,3 +63,8 @@ Test the deployed backend with a browser and Postman or VS Code REST client to e
 Create a README.md at the root of your repository, and add a link to your online application to it.
 
 > [Link to online app](https://nameless-castle-40757.herokuapp.com/api/persons)
+
+## 3.11 phonebook full stack
+Generate a production build of your frontend, and add it to the internet application using the method introduced in this part.
+
+Also make sure that the frontend still works locally.

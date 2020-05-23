@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### DELETE SINGLE PERSON
-DELETE https://nameless-castle-40757.herokuapp.com/api/persons/1
+DELETE https://nameless-castle-40757.herokuapp.com/api/persons/39900499
 
 ### GET ALL PERSONS
 GET https://nameless-castle-40757.herokuapp.com/api/persons
