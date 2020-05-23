@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ### DELETE SINGLE PERSON
-DELETE http://localhost:3001/api/persons/1
+DELETE http://localhost:3001/api/persons/98697097
 
 ### GET ALL PERSONS
 GET http://localhost:3001/api/persons
@@ -18,3 +18,25 @@ GET http://localhost:3001/api/persons/1
 
 ### GET SINGLE PERSON 404
 GET http://localhost:3001/api/persons/999
+
+
+############ HEROKU ############
+POST https://nameless-castle-40757.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Jake",
+    "number": "123"
+}
+
+### DELETE SINGLE PERSON
+DELETE https://nameless-castle-40757.herokuapp.com/api/persons/1
+
+### GET ALL PERSONS
+GET https://nameless-castle-40757.herokuapp.com/api/persons
+
+### GET SINGLE PERSON
+GET https://nameless-castle-40757.herokuapp.com/api/persons/1
+
+### GET SINGLE PERSON 404
+GET https://nameless-castle-40757.herokuapp.com/api/persons/999
