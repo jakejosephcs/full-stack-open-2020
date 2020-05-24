@@ -4,6 +4,8 @@
 
 # Exercises 3.9.-3.11. [LINK to exercises](https://fullstackopen.com/en/part3/deploying_app_to_internet#exercises-3-9-3-11)
 
+# Exercise 3.12. [LINK to exercises](https://fullstackopen.com/en/part3/saving_data_to_mongo_db#exercise-3-12)
+
 ## 3.1: Phonebook backend step1
 
 Implement a Node application that returns a hardcoded list of phonebook entries from the address http://localhost:3001/api/persons:
@@ -70,3 +72,19 @@ Generate a production build of your frontend, and add it to the internet applica
 Also make sure that the frontend still works locally.
 
 > [Link to online app (frontend)](https://nameless-castle-40757.herokuapp.com/)
+
+## 3.12: Command-line database
+Create a cloud-based MongoDB database for the phonebook application with MongoDB Atlas.
+
+Create a mongo.js file in the project directory, that can be used for adding entries to the phonebook, and for listing all of the existing entries in the phonebook.
+
+## 3.13: Phonebook database, step1
+Change the fetching of all phonebook entries so that the data is fetched from the database.
+
+Verify that the frontend works after the changes have been made.
+
+## 3.14: Phonebook database, step2
+Change the backend so that new numbers are saved to the database. Verify that your frontend still works after the changes.
+
+At this point, you can choose to simply allow users to create all phonebook entries. At this stage, the phonebook can have multiple entries for a person with the same name.
+

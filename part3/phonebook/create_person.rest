@@ -3,18 +3,18 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "Jake",
+    "name": "JJ",
     "number": "123"
 }
 
 ### DELETE SINGLE PERSON
-DELETE http://localhost:3001/api/persons/78081509
+DELETE http://localhost:3001/api/persons/1
 
 ### GET ALL PERSONS
 GET http://localhost:3001/api/persons
 
 ### GET SINGLE PERSON
-GET http://localhost:3001/api/persons/1
+GET http://localhost:3001/api/persons/5ecaf638013f9512549cb15a
 
 ### GET SINGLE PERSON 404
 GET http://localhost:3001/api/persons/999

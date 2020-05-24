@@ -3,33 +3,11 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 const cors = require('cors')
+const Person = require('./models/person')
 
 app.use(cors())
 app.use(express.json())
 app.use(express.static('build'))
-
-
-
-const mongoose = require('mongoose')
-
-const url = process.env.MONGODB_URI
-
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => {
-        console.log('connected to MongoDB')
-    }).catch((error) => {
-        console.log('error connecting to MongoDB: ', error.message)
-    })
-
-const personSchema = new mongoose.Schema({
-    name: String,
-    number: String,
-})
-
-const Person = mongoose.model('Person', personSchema)
-
-
-
 
 morgan.token('body', (req, res, param) => { 
     if(req.method !== 'POST') {
@@ -39,33 +17,6 @@ morgan.token('body', (req, res, param) => {
 })
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
-
-let persons = [{
-        "name": "Arto Hellas",
-        "number": "040-123456",
-        "id": 1
-    },
-    {
-        "name": "Ada Lovelace",
-        "number": "39-44-5323523",
-        "id": 2
-    },
-    {
-        "name": "Dan Abramov",
-        "number": "12-43-234345",
-        "id": 3
-    },
-    {
-        "name": "Mary Poppendieck",
-        "number": "39-23-6423122",
-        "id": 4
-    }
-]
-
-const generateId = () => {
-    const id = parseInt(Math.random() * 100000000, 10)
-    return id
-}
 
 app.post('/api/persons', (request, response) => {
     const body = request.body
@@ -82,26 +33,14 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    const person = {
-        name: body.name,
-        number: body.number,
-        id: generateId(),
-    }
+    const person = new Person({
+        name: String(body.name),
+        number: String(body.number),
+    })
 
-
-    persons = persons.concat(person)
-
-    response.json(person)
-})
-
-app.get('/people', (request, response) => {
-    let personsLength = persons.length
-    let date = new Date()
-
-    response.send(`
-        <p>Phonebook has info for ${personsLength} people</p>
-        <p>${date}</p>
-    `)
+    person.save().then(savedPerson => {
+        response.json(savedPerson)
+    })
 })
 
 app.get('/api/persons', (request, response) => {
@@ -111,16 +50,9 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const person = persons.find(person => person.id === id)
-
-    if(person) {
-        response.json(person)
-    } else {
-        response.status(404).end()
-    }
-
-    
+    Person.findById(String(request.params.id)).then(per => {
+        response.json(per)
+    })
 })
 
 app.delete('/api/persons/:id', (request, response) => {
@@ -130,7 +62,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
