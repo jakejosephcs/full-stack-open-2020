@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
@@ -6,6 +7,28 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 app.use(express.static('build'))
+
+
+
+const mongoose = require('mongoose')
+
+const url = process.env.MONGODB_URI
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(result => {
+        console.log('connected to MongoDB')
+    }).catch((error) => {
+        console.log('error connecting to MongoDB: ', error.message)
+    })
+
+const personSchema = new mongoose.Schema({
+    name: String,
+    number: String,
+})
+
+const Person = mongoose.model('Person', personSchema)
+
+
 
 
 morgan.token('body', (req, res, param) => { 
@@ -71,7 +94,7 @@ app.post('/api/persons', (request, response) => {
     response.json(person)
 })
 
-app.get('/notes', (request, response) => {
+app.get('/people', (request, response) => {
     let personsLength = persons.length
     let date = new Date()
 
@@ -82,7 +105,9 @@ app.get('/notes', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    Person.find({}).then(per => {
+        response.json(per)
+    })
 })
 
 app.get('/api/persons/:id', (request, response) => {
