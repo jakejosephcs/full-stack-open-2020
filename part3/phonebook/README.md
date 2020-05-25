@@ -106,3 +106,9 @@ Modify the backend to support this request.
 
 Verify that the frontend works after making your changes.
 
+## 3.18*: Phonebook database step6
+Also update the handling of the api/persons/:id and info routes to use the database, and verify that they work directly with the browser, Postman, or VS Code REST client.
+
+Inspecting an individual phonebook entry from the browser should look like this:
+
+> ![3.18 finished](https://fullstackopen.com/static/853a1d57372a2b5c8fc1249b682d59a7/14be6/49.png)
