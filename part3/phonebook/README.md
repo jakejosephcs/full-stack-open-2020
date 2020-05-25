@@ -96,3 +96,6 @@ Change the backend so that deleting phonebook entries is reflected in the databa
 
 Verify that the frontend still works after making the changes.
 
+## 3.16: Phonebook database, step4
+Move the error handling of the application to a new error handler middleware.
+
