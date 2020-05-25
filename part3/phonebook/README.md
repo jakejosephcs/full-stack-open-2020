@@ -6,6 +6,9 @@
 
 # Exercise 3.12. [LINK to exercises](https://fullstackopen.com/en/part3/saving_data_to_mongo_db#exercise-3-12)
 
+# Exercises 3.15.-3.18. [LINK to exercises](https://fullstackopen.com/en/part3/saving_data_to_mongo_db#exercises-3-15-3-18)
+
+
 ## 3.1: Phonebook backend step1
 
 Implement a Node application that returns a hardcoded list of phonebook entries from the address http://localhost:3001/api/persons:
@@ -87,4 +90,9 @@ Verify that the frontend works after the changes have been made.
 Change the backend so that new numbers are saved to the database. Verify that your frontend still works after the changes.
 
 At this point, you can choose to simply allow users to create all phonebook entries. At this stage, the phonebook can have multiple entries for a person with the same name.
+
+## 3.15: Phonebook database, step3
+Change the backend so that deleting phonebook entries is reflected in the database.
+
+Verify that the frontend still works after making the changes.
 
