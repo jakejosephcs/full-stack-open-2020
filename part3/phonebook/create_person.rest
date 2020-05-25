@@ -3,27 +3,27 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "JJ",
+    "name": "JJJ",
     "number": "1234"
 }
 
 ### CHANGE NUMBER OF SINGLE PERSON
-PUT http://localhost:3001/api/persons/5ecc34f291534407fd6ad89a
+PUT http://localhost:3001/api/persons/5ecc34e691534407fd6ad899
 Content-Type: application/json
 
 {
-    "name": "Keep name",
+    "name": "JJ",
     "number": "But update the #"
 }
 
 ### DELETE SINGLE PERSON
-DELETE http://localhost:3001/api/persons/5ecc2ef9df6ac10596657b3d
+DELETE http://localhost:3001/api/persons/5ecc59a0adb2c70b56ab4cdb
 
 ### GET ALL PERSONS
 GET http://localhost:3001/api/persons
 
 ### GET SINGLE PERSON
-GET http://localhost:3001/api/persons/5ecaf638013f9512549cb15a
+GET http://localhost:3001/api/persons/5ecc34e661534407fd6ad899
 
 ### GET SINGLE PERSON 404
 GET http://localhost:3001/api/persons/999

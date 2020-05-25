@@ -8,6 +8,8 @@
 
 # Exercises 3.15.-3.18. [LINK to exercises](https://fullstackopen.com/en/part3/saving_data_to_mongo_db#exercises-3-15-3-18)
 
+# Exercises 3.19.-3.21. [LINK to exercises](https://fullstackopen.com/en/part3/validation_and_es_lint#exercises-3-19-3-21)
+
 
 ## 3.1: Phonebook backend step1
 
