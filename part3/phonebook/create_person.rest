@@ -4,17 +4,26 @@ Content-Type: application/json
 
 {
     "name": "JJ",
-    "number": "123"
+    "number": "1234"
+}
+
+### CHANGE NUMBER OF SINGLE PERSON
+PUT http://localhost:3001/api/persons/5ecc34f291534407fd6ad89a
+Content-Type: application/json
+
+{
+    "name": "Keep name",
+    "number": "But update the #"
 }
 
 ### DELETE SINGLE PERSON
-DELETE http://localhost:3001/api/persons/5ecb00b77c8e83146e279a99
+DELETE http://localhost:3001/api/persons/5ecc2ef9df6ac10596657b3d
 
 ### GET ALL PERSONS
 GET http://localhost:3001/api/persons
 
 ### GET SINGLE PERSON
-GET http://localhost:3001/api/persons/5ecaf638013f9512549cb15a
+GET http://localhost:3001/api/persons/5ecaf638013f9512549cb15b
 
 ### GET SINGLE PERSON 404
 GET http://localhost:3001/api/persons/999
