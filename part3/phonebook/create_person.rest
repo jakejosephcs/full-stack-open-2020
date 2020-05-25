@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ### DELETE SINGLE PERSON
-DELETE http://localhost:3001/api/persons/1
+DELETE http://localhost:3001/api/persons/5ecb00b77c8e83146e279a99
 
 ### GET ALL PERSONS
 GET http://localhost:3001/api/persons
