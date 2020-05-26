@@ -114,3 +114,12 @@ Also update the handling of the api/persons/:id and info routes to use the datab
 Inspecting an individual phonebook entry from the browser should look like this:
 
 > ![3.18 finished](https://fullstackopen.com/static/853a1d57372a2b5c8fc1249b682d59a7/14be6/49.png)
+
+## 3.19: Phonebook database, step7
+Add validation to your phonebook application, that will make sure that a newly added person has a unique name.
+
+If an HTTP POST request tries to add a name that is already in the phonebook, the server must respond with an appropriate status code and error message.
+
+### 3.20*: Phonebook database, step8
+Expand the validation so that the name stored in the database has to be at least three characters long, and the phone number must have at least 8 digits.
+
