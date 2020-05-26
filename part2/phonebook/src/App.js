@@ -67,7 +67,7 @@ const App = () => {
                 }, 2000)
             })
             .catch(error => {
-                setMessage(error.response.data)
+                setMessage(error.response.data.error)
                 setTimeout(() => {
                     setMessage(null)
                     window.location.reload()

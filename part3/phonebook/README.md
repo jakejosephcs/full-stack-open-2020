@@ -123,3 +123,8 @@ If an HTTP POST request tries to add a name that is already in the phonebook, th
 ### 3.20*: Phonebook database, step8
 Expand the validation so that the name stored in the database has to be at least three characters long, and the phone number must have at least 8 digits.
 
+### 3.21 Deploying the database backend to production
+Generate a new "full stack" version of the application by creating a new production build of the frontend, and copy it to the backend repository. Verify that everything works locally by using the entire application from the address https://localhost:3001.
+
+Push the latest version to Heroku and verify that everything works there as well.
+
