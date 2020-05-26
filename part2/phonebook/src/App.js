@@ -66,6 +66,13 @@ const App = () => {
                     window.location.reload()
                 }, 2000)
             })
+            .catch(error => {
+                setMessage(error.response.data)
+                setTimeout(() => {
+                    setMessage(null)
+                    window.location.reload()
+                }, 2000)
+            })
     }
 
 
