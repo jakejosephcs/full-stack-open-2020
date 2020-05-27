@@ -128,3 +128,6 @@ Generate a new "full stack" version of the application by creating a new product
 
 Push the latest version to Heroku and verify that everything works there as well.
 
+## 3.22: Lint configuration
+Add ESlint to your application and fix all the warnings.
+

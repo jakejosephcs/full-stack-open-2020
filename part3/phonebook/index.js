@@ -10,11 +10,11 @@ app.use(express.static('build'))
 app.use(express.json())
 
 
-morgan.token('body', (req, res, param) => { 
-    if(req.method !== 'POST') {
-        return `Not a post, a ${req.method}`
+morgan.token('body', (request) => {
+    if(request.method !== 'POST') {
+        return `Not a post, a ${request.method}`
     }
-    return JSON.stringify(req.body)
+    return JSON.stringify(request.body)
 })
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
@@ -60,7 +60,7 @@ app.get('/api/persons/:id', (request, response, next) => {
         .catch(error => next(error))
 })
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response, next) => {
     Person.findByIdAndRemove(request.params.id)
         .then(result => {
             response.status(204).end()
@@ -70,7 +70,6 @@ app.delete('/api/persons/:id', (request, response) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
     const body = request.body
-    
     const person = {
         name: body.name,
         number: body.number,
@@ -78,7 +77,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 
     console.log(person)
 
-    Person.findByIdAndUpdate(request.params.id, person, {new: true})
+    Person.findByIdAndUpdate(request.params.id, person, { new: true })
         .then(updatedPerson => {
             response.json(updatedPerson.toJSON())
         })
@@ -90,9 +89,9 @@ const errorHandler = (error, request, response, next) => {
     console.log(error.message)
 
     if (error.name === 'CastError' && error.kind === 'ObjectId') {
-        return response.status(400).send({error: 'malformatted id'})
-    }else if (error.name === "ValidationError") {
-        return response.status(400).json({ error: error.message})
+        return response.status(400).send({ error: 'malformatted id' })
+    }else if (error.name === 'ValidationError') {
+        return response.status(400).json({ error: error.message })
     }
 
     next (error)
@@ -101,7 +100,7 @@ const errorHandler = (error, request, response, next) => {
 app.use(errorHandler)
 
 const unknownEndpoint = (request, response) => {
-    response.status(404).send({ error: 'unknown endpoint'})
+    response.status(404).send({ error: 'unknown endpoint' })
 }
 
 app.use(unknownEndpoint)
