@@ -2,10 +2,10 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Laura's Journey",
-    "author": "Laura Joseph",
-    "url": "Laurajoseph.com",
-    "likes": 998
+    "title": "Test",
+    "author": "Test Joseph",
+    "url": "Test@test.com",
+    "likes": 1
 }
 
 ####
