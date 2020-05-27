@@ -1,0 +1,14 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Laura's Journey",
+    "author": "Laura Joseph",
+    "url": "Laurajoseph.com",
+    "likes": 998
+}
+
+####
+
+GET http://localhost:3003/api/blogs
+
