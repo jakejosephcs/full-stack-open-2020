@@ -83,3 +83,22 @@ test('dummy returns one', () => {
   expect(result).toBe(1)
 })
 ```
+
+## 4.4: helper functions and unit tests, step2
+Define a new totalLikes function that receives a list of blog posts as a parameter. The function returns the total sum of likes in all of the blog posts. Write appropriate tests for the function
+
+## 4.5*: helper functions and unit tests, step3
+Define a new favoriteBlog function that receives a list of blogs as a parameter. The function finds out which blog has most likes. If there are many top favorites, it is enough to return one of them.
+
+The value returned by the function could be in the following format:
+
+```javascript
+{
+  title: "Canonical string reduction",
+  author: "Edsger W. Dijkstra",
+  likes: 12
+}
+```
+
+Write the tests for this exercise inside of a new describe block. Do the same for the remaining exercises as well.
+
