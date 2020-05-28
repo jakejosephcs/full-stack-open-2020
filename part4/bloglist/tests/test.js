@@ -262,7 +262,7 @@ describe('mostLikes', () => {
         expect(result).toEqual(answerToEmptyList)
     })
 
-    test('of a bigger list is calculated right', () => {
+    test('of a bigger list is calculated correctly', () => {
         const result = listHelper.mostLikes(listWithManyBlogs)
         expect(result).toEqual(answerToMostLikes)
     })
