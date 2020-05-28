@@ -1,4 +1,4 @@
-# Exercises Exercises 4.1.-4.2. [LINK to exercises](https://fullstackopen.com/en/part4/structure_of_backend_application_introduction_to_testing#exercises-4-1-4-2)
+# Exercises 4.1.-4.2. [LINK to exercises](https://fullstackopen.com/en/part4/structure_of_backend_application_introduction_to_testing#exercises-4-1-4-2)
 In the exercises for this part we will be building a blog list application, that allows users to save information about interesting blogs they have stumbled across on the internet. For each listed blog we will save the author, title, url, and amount of upvotes from users of the application.
 
 ## 4.1 Blog list, step1
@@ -47,5 +47,39 @@ app.post('/api/blogs', (request, response) => {
 const PORT = 3003
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+})
+```
+
+Turn the application into a functioning npm project.
+
+## 4.2 Blog list, step2
+Refactor the application into separate modules as shown earlier in this part of the course material.
+
+# Exercises 4.3.-4.7. [LINK to exercises](https://fullstackopen.com/en/part4/structure_of_backend_application_introduction_to_testing#exercises-4-3-4-7)
+Let's create a collection of helper functions that are meant to assist dealing with the blog list. Create the functions into a file called utils/list_helper.js. Write your tests into an appropriately named test file under the tests directory.
+
+## 4.3: helper functions and unit tests, step1
+First define a dummy function that receives an array of blog posts as a parameter and always returns the value 1. The contents of the list_helper.js file at this point should be the following:
+
+```javascript
+const dummy = (blogs) => {
+  // ...
+}
+
+module.exports = {
+  dummy
+}
+```
+
+Verify that your test configuration works with the following test:
+
+```javascript
+const listHelper = require('../utils/list_helper')
+
+test('dummy returns one', () => {
+  const blogs = []
+
+  const result = listHelper.dummy(blogs)
+  expect(result).toBe(1)
 })
 ```
