@@ -102,3 +102,14 @@ The value returned by the function could be in the following format:
 
 Write the tests for this exercise inside of a new describe block. Do the same for the remaining exercises as well.
 
+## 4.6*: helper functions and unit tests, step4
+Define a function called mostBlogs that receives an array of blogs as a parameter. The function returns the author who has the largest amount of blogs. The return value also contains the number of blogs the top author has:
+
+```javascript
+{
+  author: "Robert C. Martin",
+  blogs: 3
+}
+```
+
+If there are many top bloggers, then it is enough to return any one of them.
