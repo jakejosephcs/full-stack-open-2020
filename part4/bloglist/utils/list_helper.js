@@ -28,8 +28,40 @@ const mostBlogs = (blogs) => {
 
 }
 
+const mostLikes = (blogs) => {
+    // Receives an array of blogs
+    // Returns the author who has the most amount of likes
+    // Returned as:
+    // {
+    //      author: String,
+    //      likes: Number
+    // }
+
+    const sortedByAuthor = lodash.groupBy(blogs, 'author')
+
+    let authorAndLikes = []
+
+    for (let key in sortedByAuthor) {
+        const authorName = key
+        const authorLikes = sortedByAuthor[authorName].map(authors => authors.likes)
+        const authorNameLikes = [{
+            author: authorName,
+            likes: authorLikes.reduce((a, b) => a + b)
+        }]
+        authorAndLikes = authorAndLikes.concat(authorNameLikes)
+    }
+
+    const sortedAuthorAndLikes = lodash.sortBy(authorAndLikes, ['author','likes'])
+
+    return {
+        author: sortedAuthorAndLikes[0] ? sortedAuthorAndLikes[0].author : 'None',
+        likes: sortedAuthorAndLikes[0] ? sortedAuthorAndLikes[0].likes : 0
+    }
+}
+
 module.exports = {
     totalLikes,
     favoriteBlog,
     mostBlogs,
+    mostLikes,
 }
