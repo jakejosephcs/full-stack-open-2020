@@ -108,13 +108,34 @@ test('delete a blog post', async() => {
 
     const blogsAtEnd = await helper.blogsinDb()
 
-    console.log('blogs at end: ', blogsAtEnd)
-
     expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
 
     const blogIds = blogsAtEnd.map(r => r.id)
 
     expect(blogIds.includes(blogToDelete.id)).toBe(false)
+})
+
+test('Updating info of an individual blog', async () => {
+    const blogsAtStart = await helper.blogsinDb()
+    const blogToUpdate = blogsAtStart[0]
+
+    const newContent = {
+        title: `${blogToUpdate.title}`,
+        author: `${blogToUpdate.author}`,
+        url: `${blogToUpdate.url}`,
+        likes: `${blogToUpdate.likes + 1}`
+    }
+
+    await api
+        .put(`/api/blogs/${blogToUpdate.id}`)
+        .send(newContent)
+        .expect(201)
+
+    const blogsAtEnd = await helper.blogsinDb()
+
+    expect(blogsAtEnd.length).toBe(helper.initialBlogs.length)
+
+    expect(blogsAtEnd[0].likes).toBe(8)
 })
 
 afterAll(() => {

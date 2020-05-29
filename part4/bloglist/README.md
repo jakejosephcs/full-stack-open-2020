@@ -162,3 +162,9 @@ Implement functionality for deleting a single blog post resource.
 Use the async/await syntax. Follow RESTful conventions when defining the HTTP API.
 
 Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.
+
+## 4.14 Blog list expansions, step2
+Implement functionality for updating the information of an individual blog post.
+
+Use async/await. Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.
+
