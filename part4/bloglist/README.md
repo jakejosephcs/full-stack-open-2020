@@ -125,3 +125,17 @@ Define a function called mostLikes that receives an array of blogs as its parame
 ```
 
 If there are many top bloggers, then it is enough to show any one of them.
+
+# Exercises 4.8.-4.12. [LINK to exercises](https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12)
+Warning: If you find yourself using async/await and then methods in the same code, it is almost guaranteed that you are doing something wrong. Use one or the other and don't mix the two.
+
+## 4.8: Blog list tests, step1
+Use the supertest package for writing a test that makes an HTTP GET request to the /api/blogs url. Verify that the blog list application returns the correct amount of blog posts in the JSON format.
+
+Once the test is finished, refactor the route handler to use the async/await syntax instead of promises.
+
+## 4.9*: Blog list tests, step2
+Write a test that verifies that the unique identifier property of the blog posts is named id, by default the database names the property _id.
+
+Make the required changes to the code so that it passes the test.
+

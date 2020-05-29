@@ -17,6 +17,12 @@ test('there are zero notes', async () => {
     expect(response.body).toHaveLength(0)
 })
 
+test('blog id is named id and not _id', async () => {
+    const response = await api.get('/api/blogs')
+
+    expect(response.body[0].id).toBeDefined()
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })
