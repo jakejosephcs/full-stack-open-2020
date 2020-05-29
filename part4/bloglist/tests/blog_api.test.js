@@ -82,6 +82,25 @@ test('missing likes defaults to 0', async () => {
     expect(likes.includes(undefined)).toBe(false)
 })
 
+test('title and url properties are missing', async () => {
+    const newBlog = {
+        // title: "Test",
+        author: "Test Joseph",
+        // url: "Test@test.com",
+        likes: 12
+    }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    
+    const response = await api.get('/api/blogs')
+
+    expect(response.body).toHaveLength(initialBlogs.length)
+
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })
