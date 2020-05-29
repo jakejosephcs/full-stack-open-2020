@@ -148,3 +148,17 @@ Once the test is finished, refactor the operation to use async/await instead of 
 Write a test that verifies that if the likes property is missing from the request, it will default to the value 0. Do not test the other properties of the created blogs yet.
 
 Make the required changes to the code so that it passes the test.
+
+## 4.12*: Blog list tests, step5
+Write a test related to creating new blogs via the /api/blogs endpoint, that verifies that if the title and url properties are missing from the request data, the backend responds to the request with the status code 400 Bad Request.
+
+Make the required changes to the code so that it passes the test.
+
+# Exercises 4.13.-4.14. [LINK to exercises](https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-13-4-14)
+
+## 4.13 Blog list expansions, step1
+Implement functionality for deleting a single blog post resource.
+
+Use the async/await syntax. Follow RESTful conventions when defining the HTTP API.
+
+Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.

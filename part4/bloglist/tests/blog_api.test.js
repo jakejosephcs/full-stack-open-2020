@@ -1,23 +1,20 @@
-const mongoose = require('mongoose')
 const supertest = require('supertest')
+const mongoose = require('mongoose')
+const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
+
 const Blog = require('../models/blog')
 
-const initialBlogs = [
-    {
-        title: "Canonical string reduction",
-        author: "Jake Joseph",
-        url: "http://www,jakejoseph.com",
-        likes: 12
-    }
-]
 
 beforeEach(async () => {
     await Blog.deleteMany({})
         
-    let blogObject = new Blog(initialBlogs[0])
-    await blogObject.save()
+    const blogObjects = helper.initialBlogs.map(blog => new Blog(blog))
+
+    const promiseArray = blogObjects.map(blog => blog.save())
+
+    await Promise.all(promiseArray)
 })
 
 test('blogs are returned as json', async () => {
@@ -46,13 +43,13 @@ test('able to post a blog', async () => {
     const title = response.body.map(r => r.title)
 
     expect(title).toContain('Test')
-    expect(response.body).toHaveLength(initialBlogs.length + 1)
+    expect(response.body).toHaveLength(helper.initialBlogs.length + 1)
 })
 
-test('there are zero notes', async () => {
+test('there are five blogs', async () => {
     const response = await api.get('/api/blogs')
 
-    expect(response.body).toHaveLength(0)
+    expect(response.body).toHaveLength(5)
 })
 
 test('blog id is named id and not _id', async () => {
@@ -97,8 +94,27 @@ test('title and url properties are missing', async () => {
     
     const response = await api.get('/api/blogs')
 
-    expect(response.body).toHaveLength(initialBlogs.length)
+    expect(response.body).toHaveLength(helper.initialBlogs.length)
 
+})
+
+test('delete a blog post', async() => {
+    const blogsAtStart = await helper.blogsinDb()
+    const blogToDelete = blogsAtStart[0]
+
+    await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(204)
+
+    const blogsAtEnd = await helper.blogsinDb()
+
+    console.log('blogs at end: ', blogsAtEnd)
+
+    expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
+
+    const blogIds = blogsAtEnd.map(r => r.id)
+
+    expect(blogIds.includes(blogToDelete.id)).toBe(false)
 })
 
 afterAll(() => {
