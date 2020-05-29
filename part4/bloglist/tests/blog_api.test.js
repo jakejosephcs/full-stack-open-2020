@@ -61,6 +61,27 @@ test('blog id is named id and not _id', async () => {
     expect(response.body[0].id).toBeDefined()
 })
 
+test('missing likes defaults to 0', async () => {
+    const newBlog = {
+        title: "Test",
+        author: "Test Joseph",
+        url: "Test@test.com",
+        // likes: 1
+    }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(200)
+        .expect('Content-Type', /application\/json/)
+
+    const response = await api.get('/api/blogs')
+
+    const likes = response.body.map(r => r.likes)
+
+    expect(likes.includes(undefined)).toBe(false)
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })
