@@ -218,25 +218,61 @@ describe('when there is initially one user in the db', () => {
         expect(usernames).toContain(newUser.username)
     })
 
-    test('creation fails with proper statuscode and message if username already taken', async () => {
-        const usersAtStart = await helper.usersInDb()
 
-        const newUser = {
-            username: 'mluukkai',
-            name: 'Matti Luukkainen',
-            passwordHash: 'salainen'
-        }
+    describe('invalid users are not created', () => {
+        test('creation fails with proper statuscode and message if username already taken', async () => {
+            const usersAtStart = await helper.usersInDb()
+    
+            const newUser = {
+                username: 'mluukkai',
+                name: 'Matti Luukkainen',
+                password: 'salainen'
+            }
+    
+            const result = await api
+                .post('/api/users')
+                .send(newUser)
+                .expect(400)
+                .expect('Content-Type', /application\/json/)
+    
+            expect(result.body.error).toContain('`username` to be unique')
+    
+            const usersAtEnd = await helper.usersInDb()
+            expect(usersAtEnd.length).toBe(usersAtStart.length)
+        })
+        
+        test('invalid user name is not allowed or added', async () => {
+            const invalidUser = {
+                username: "tr",
+                name: "Tre fo live",
+                password: "trefourfive"
+            }
 
-        const result = await api
-            .post('/api/users')
-            .send(newUser)
-            .expect(400)
-            .expect('Content-Type', /application\/json/)
+            await api
+                .post('/api/users')
+                .send(invalidUser)
+                .expect(400)
+                .expect('Content-Type', /application\/json/)
+            
+            const usersAtEnd = await helper.usersInDb()
+            expect(usersAtEnd.length).toBe((await helper.usersInDb()).length)
+        })
 
-        expect(result.body.error).toContain('`username` to be unique')
+        test('invalid password is not allowed or added', async () => {
+            const invalidUserPass = {
+                username: 'treee',
+                name: 'treee four fiveee',
+                password: '12'
+            }
 
-        const usersAtEnd = await helper.usersInDb()
-        expect(usersAtEnd.length).toBe(usersAtStart.length)
+            const errorResult = await api
+                .post('/api/users')
+                .send(invalidUserPass)
+                .expect(401)
+                .expect('Content-Type', /application\/json/)
+
+            expect(errorResult.body.error).toContain('invalid password')
+        })
     })
 })
 
