@@ -1,54 +1,70 @@
 const Blog = require('../models/blog')
+const User = require('../models/user')
 
 const initialBlogs = [
     {
-        _id: '5a422a851b54a676234d17f7',
-        title: 'React patterns',
-        author: 'Michael Chan',
-        url: 'https://reactpatterns.com/',
-        likes: 7,
-        __v: 0
-    },
-    {
-        _id: '5a422aa71b54a676234d17f8',
-        title: 'Go To Statement Considered Harmful',
-        author: 'Edsger W. Dijkstra',
-        url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
+        title: "Go To Statement Considered Harmful",
+        author: "Edsger W. Dijkstra",
+        url:
+        "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
         likes: 5,
-        __v: 0
+        _id: "5ed3feb941e6900c5705438b"
     },
     {
-        _id: '5a422b3a1b54a676234d17f9',
-        title: 'Canonical string reduction',
-        author: 'Edsger W. Dijkstra',
-        url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
-        likes: 12,
-        __v: 0
+        title: "React patterns",
+        author: "Michael Chan",
+        url: "https://reactpatterns.com/",
+        likes: 7,
+        _id: "5ed3feb941e6900c5705438c"
     },
     {
-        _id: '5a422b891b54a676234d17fa',
-        title: 'First class tests',
-        author: 'Robert C. Martin',
-        url: 'http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll',
-        likes: 10,
-        __v: 0
+        title: "Learn Basics of React.js in 11 Minutes",
+        author: "Madhu Pathy",
+        url:
+        "https://medium.com/@madhupathy/learn-basics-of-react-js-in-3-minutes-a94cbc6f02c8",
+        _id: "5ed3feb941e6900c5705438d",
+        likes: 9,
+    }
+];
+
+const initialUsers = [
+    {
+        username: 'hellas',
+        name: 'Arto Hellas',
+        id: '5c4857c4003ad1a6e6626932'
     },
     {
-        _id: '5a422ba71b54a676234d17fb',
-        title: 'TDD harms architecture',
-        author: 'Robert C. Martin',
-        url: 'http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html',
-        likes: 0,
-        __v: 0
+        username: 'mluukkai',
+        name: 'Matti Luukkainen',
+        id: '5c4857c4003ad1a6e6626932'
     }
 ]
+
+const nonExisitingId = async () => {
+    const blog = new Blog({
+        title: 'No id in this one',
+    })
+    
+    await blog.save()
+    await blog.remove()
+
+    return blog._id.toString()
+}
 
 const blogsinDb = async () => {
     const blogs = await Blog.find({})
     return blogs.map(blog => blog.toJSON())
 }
 
+const usersInDb = async () => {
+    const users = await User.find({})
+    return users.map(user => user.toJSON())
+}
+
 module.exports = {
     initialBlogs,
-    blogsinDb
+    initialUsers,
+    blogsinDb,
+    usersInDb,
+    nonExisitingId
 }

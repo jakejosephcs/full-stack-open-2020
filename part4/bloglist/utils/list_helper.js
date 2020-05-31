@@ -29,14 +29,6 @@ const mostBlogs = (blogs) => {
 }
 
 const mostLikes = (blogs) => {
-    // Receives an array of blogs
-    // Returns the author who has the most amount of likes
-    // Returned as:
-    // {
-    //      author: String,
-    //      likes: Number
-    // }
-
     const sortedByAuthor = lodash.groupBy(blogs, 'author')
 
     let authorAndLikes = []

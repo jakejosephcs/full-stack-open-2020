@@ -1,3 +1,4 @@
+######### BLOGS #########
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
@@ -5,10 +6,23 @@ Content-Type: application/json
     "title": "Test",
     "author": "Test Joseph",
     "url": "Test@test.com",
-    "likes": 1
+    "likes": 1,
+    "userId": "000000001" 
 }
-
 ####
-
 GET http://localhost:3001/api/blogs
 
+
+
+
+
+######### BLOGS #########
+POST http://localhost:3001/api/users
+Content-Type: "application/json"
+
+{
+    "username": "hellas",
+    "name": "Arto Hellas",
+}
+###
+GET http://localhost:3001/api/users

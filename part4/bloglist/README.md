@@ -168,3 +168,14 @@ Implement functionality for updating the information of an individual blog post.
 
 Use async/await. Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.
 
+# Exercises 4.15.-4.22. [LINK to exercises](https://fullstackopen.com/en/part4/token_authentication#exercises-4-15-4-22)
+In the next exercises, basics of user management will be implemented for the Bloglist application.
+
+# 4.15: bloglist expansion, step3
+Implement a way to create new users by doing a HTTP POST-request to address api/users. Users have username , password and name.
+
+Do not save passwords to the database as clear text, but use the bcrypt library.
+
+Implement a way to see the details of all users by doing a suitable HTTP request. List of users can for example, look as follows:
+
+![Exercise 4.15](https://fullstackopen.com/static/b59bda1bd7e5987a5c805332d509e516/14be6/22.png)
