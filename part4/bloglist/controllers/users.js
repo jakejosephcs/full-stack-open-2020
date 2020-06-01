@@ -7,8 +7,6 @@ usersRouter.post('/', async (request, response) => {
 
     const saltRounds = 10
 
-    console.log(body.password)
-
     if (String(body.password) === undefined || String(body.password).length < 3) {
         response.status(401).json({ error: `invalid password`})
     }
@@ -27,7 +25,9 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.get('/', async (request, response) => {
-    const users = await User.find({})
+    const users = await User
+        .find({})
+        .populate('blogs', { url: 1, title: 1, author: 1 })
     response.json(users.map(u => u.toJSON()))
 })
 

@@ -171,7 +171,7 @@ Use async/await. Feel free to implement tests for the functionality if you want 
 # Exercises 4.15.-4.22. [LINK to exercises](https://fullstackopen.com/en/part4/token_authentication#exercises-4-15-4-22)
 In the next exercises, basics of user management will be implemented for the Bloglist application.
 
-# 4.15: bloglist expansion, step3
+## 4.15: bloglist expansion, step3
 Implement a way to create new users by doing a HTTP POST-request to address api/users. Users have username , password and name.
 
 Do not save passwords to the database as clear text, but use the bcrypt library.
@@ -179,3 +179,23 @@ Do not save passwords to the database as clear text, but use the bcrypt library.
 Implement a way to see the details of all users by doing a suitable HTTP request. List of users can for example, look as follows:
 
 ![Exercise 4.15](https://fullstackopen.com/static/b59bda1bd7e5987a5c805332d509e516/14be6/22.png)
+
+## 4.16*: bloglist expansion, step4
+Add a feature which adds the following restrictions to creating new users: Both username and password must be given. Both username and password must be at least 3 characters long. The username must be unique.
+
+The operation must respond with a suitable status code and some kind of an error message if invalid user is created.
+
+Also, implement tests which check that invalid users are not created and invalid add user operation returns a suitable status code and error message.
+
+## 4.17: bloglist expansion, step5
+Expand blogs so that each blog contains information on the creator of the blog.
+
+Modify adding new blogs so that when a new blog is created, any user from the database is designated as its creator (for example the one found first). Which user is designated as the creator does not matter just yet. The functionality is finished in exercise 4.19.
+
+Modify listing all blogs so that the creator's user information is displayed with the blog:
+
+![Exercise 4.17](https://fullstackopen.com/static/199682ad74f50747c90997a967856ffa/14be6/23e.png)
+
+and listing all users also displays the blogs created by each user:
+
+![Exercise 4.17](https://fullstackopen.com/static/ac9967c89785b33440e9b1b4e87c17e5/14be6/24e.png)

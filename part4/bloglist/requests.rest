@@ -3,20 +3,21 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Test",
-    "author": "Test Joseph",
-    "url": "Test@test.com",
-    "likes": 1,
-    "userId": "000000001" 
+    "title": "Matti Blog 2",
+    "author": "Matti",
+    "url": "3 Test@test.com",
+    "likes": 21,
+    "userId": "5ed4442074be381791542a63" 
 }
 ####
 GET http://localhost:3001/api/blogs
+###
+DELETE http://localhost:3001/api/blogs/5ed567548a6b5007ee736750
 
 
 
 
-
-######### BLOGS #########
+######### USERS #########
 POST http://localhost:3001/api/users
 Content-Type: "application/json"
 
