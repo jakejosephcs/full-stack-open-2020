@@ -168,3 +168,13 @@ Implement functionality for updating the information of an individual blog post.
 
 Use async/await. Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.
 
+## 4.15: bloglist expansion, step3
+Implement a way to create new users by doing a HTTP POST-request to address api/users. Users have username , password and name.
+
+Do not save passwords to the database as clear text, but use the bcrypt.
+
+Implement a way to see the details of all users by doing a suitable HTTP request.
+
+List of users can for example, look as follows:
+
+![4.15 complete](https://fullstackopen.com/static/b59bda1bd7e5987a5c805332d509e516/14be6/22.png)

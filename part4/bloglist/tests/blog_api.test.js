@@ -135,7 +135,7 @@ test('Updating info of an individual blog', async () => {
 
     expect(blogsAtEnd.length).toBe(helper.initialBlogs.length)
 
-    expect(blogsAtEnd[0].likes).toBe(8)
+    expect(blogsAtEnd[0].likes).toBe(blogsAtStart[0].likes + 1)
 })
 
 afterAll(() => {
