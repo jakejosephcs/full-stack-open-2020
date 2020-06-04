@@ -1,16 +1,16 @@
+### BLOGS ###
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impqb3NlcGgiLCJpZCI6IjVlZDkwYTNmZDczZTEyMDlmMjAzNGYwZCIsImlhdCI6MTU5MTI4MjI1MH0.3DmkQCHSDLV-I-6FNTP7_oKWQEM7iIGATstf0aCayLs
 
 {
     "title": "My Jounrey from Mechanical to Software Engineer",
     "author": "Jake Joseph",
     "url": "jakejoseph.com",
     "likes": 100,
-    "userId": "5ed900800f4e59081bc452cb"
+    "userId": "5ed90a3fd73e1209f2034f0d"
 }
 ###
-
-
 GET http://localhost:3001/api/blogs/
 
 

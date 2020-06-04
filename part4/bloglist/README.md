@@ -201,3 +201,25 @@ and listing all users also displays the blogs created by each user:
 
 ## 4.18: bloglist expansion, step6
 Implement token-based authentication according to part 4 chapter Token authentication.
+
+## 4.19: bloglist expansion, step7
+Modify adding new blogs so that it is only possible if a valid token is sent with the HTTP POST request. The user identified by the token is designated as the creator of the blog.
+
+## 4.20*: bloglist expansion, step8
+Refactor taking the token to a middleware. The middleware should take the token from the Authorization header and place it to the token field of the request object.
+
+In other words, if you register this middleware in the app.js file before all routes
+
+```
+app.use(middleware.tokenExtractor)
+```
+
+routes can access the token with ```request.token```:
+
+```javascript
+blogsRouter.post('/', async (request, response) => {
+  // ..
+  const decodedToken = jwt.verify(request.token, process.env.SECRET)
+  // ..
+})
+```
