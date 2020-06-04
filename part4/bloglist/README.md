@@ -223,3 +223,8 @@ blogsRouter.post('/', async (request, response) => {
   // ..
 })
 ```
+## 4.21* bloglist expansion, step9
+
+Change the delete blog operation so that a blog can be deleted only by the user who added the blog. Therefore, deleting a blog is possible only if the token sent with the request is the same as that of the blog's creator.
+
+If deleting a blog is attempted without a token or by a wrong user, the operation should return a suitable status code.

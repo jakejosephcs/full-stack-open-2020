@@ -8,6 +8,11 @@ blogRouter.get('/', async (request, response) => {
     response.json(blogs.map(blog => blog.toJSON()))
 })
 
+blogRouter.get('/:id', async (request, response) => {
+    const blog = await Blog.findById(request.params.id).populate('user', {username: 1, name: 1 })
+    response.json(blog.toJSON())
+})
+
 blogRouter.post('/', async (request, response) => {
     const body = request.body
 
@@ -38,8 +43,24 @@ blogRouter.post('/', async (request, response) => {
 })
 
 blogRouter.delete('/:id', async (request, response) => {
-    await Blog.findByIdAndRemove(request.params.id)
-    response.status(204).end()
+    const blog = await Blog.findById(request.params.id)
+    
+    const decodedToken = jwt.verify(request.token, process.env.SECRET)
+    if (!request.token || !decodedToken.id) {
+        return response.status(401).json({ error: 'token missing or invalid' })
+    }
+
+    console.log("blog.user: ", blog.user)
+
+    if (blog.user.toString() === decodedToken.id.toString()) {
+        await Blog.findByIdAndRemove(request.params.id)
+        return response.status(204).end()
+    }
+
+    return response.status(401).json({ error: 'You are not the owner of this blog'})
+    
+    // await Blog.findByIdAndRemove(request.params.id)
+    // response.status(204).end()
 })
 
 blogRouter.put('/:id', async (request, response) => {
