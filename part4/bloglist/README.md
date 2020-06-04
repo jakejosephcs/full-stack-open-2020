@@ -198,3 +198,6 @@ Modify listing all blogs so that the creator's user information is displayed wit
 and listing all users also displays the blogs created by each user:
 
 ![4.17 complete](https://fullstackopen.com/static/ac9967c89785b33440e9b1b4e87c17e5/14be6/24e.png)
+
+## 4.18: bloglist expansion, step6
+Implement token-based authentication according to part 4 chapter Token authentication.

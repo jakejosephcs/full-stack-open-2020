@@ -25,3 +25,14 @@ Content-Type: application/json
     "password": "jjcs2020",
     "name": "Jake Joseph"
 }
+
+
+
+### LOGIN ###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "jjoseph",
+    "password": "jjcs2020"
+}
