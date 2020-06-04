@@ -2,15 +2,16 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Test",
-    "author": "Test Joseph",
-    "url": "Test@test.com",
-    "likes": 1
+    "title": "This should belong to Jake Joseph",
+    "author": "Note Jake Joseph",
+    "url": "article.com",
+    "likes": 10,
+    "userId": "5ed8577284eb8b26606ed285"
 }
-
 ###
 
-GET http://localhost:3001/api/blogs
+
+GET http://localhost:3001/api/blogs/
 
 
 
@@ -20,7 +21,7 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "lgomes",
-    "password": "lgcs2020",
-    "name": "Laura Gomes"
+    "username": "jjoseph",
+    "password": "jjcs2020",
+    "name": "Jake Joseph"
 }
