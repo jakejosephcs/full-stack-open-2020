@@ -16,7 +16,7 @@ blogRouter.get('/:id', async (request, response) => {
 blogRouter.post('/', async (request, response) => {
     const body = request.body
 
-    if(body.title === undefined || body.url === undefined) {
+    if(!body.title || !body.url) {
         return response.status(400).end()
     }
 

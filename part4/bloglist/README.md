@@ -168,6 +168,8 @@ Implement functionality for updating the information of an individual blog post.
 
 Use async/await. Feel free to implement tests for the functionality if you want to. Otherwise verify that the functionality works with Postman or some other tool.
 
+# Exercises 4.15.-4.22. [LINK to exercises](https://fullstackopen.com/en/part4/token_authentication#exercises-4-15-4-22)
+
 ## 4.15: bloglist expansion, step3
 Implement a way to create new users by doing a HTTP POST-request to address api/users. Users have username , password and name.
 
@@ -228,3 +230,6 @@ blogsRouter.post('/', async (request, response) => {
 Change the delete blog operation so that a blog can be deleted only by the user who added the blog. Therefore, deleting a blog is possible only if the token sent with the request is the same as that of the blog's creator.
 
 If deleting a blog is attempted without a token or by a wrong user, the operation should return a suitable status code.
+
+## 4.22*: bloglist expansion, step10
+After adding token based authentication the tests for adding a new blog broke down. Fix now the tests. Write also a new test that ensures that adding a blog fails with proper status code 401 Unauthorized if token is not provided.
