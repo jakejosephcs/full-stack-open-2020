@@ -2,11 +2,11 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "This should belong to Jake Joseph",
-    "author": "Note Jake Joseph",
-    "url": "article.com",
-    "likes": 10,
-    "userId": "5ed8577284eb8b26606ed285"
+    "title": "My Jounrey from Mechanical to Software Engineer",
+    "author": "Jake Joseph",
+    "url": "jakejoseph.com",
+    "likes": 100,
+    "userId": "5ed900800f4e59081bc452cb"
 }
 ###
 
