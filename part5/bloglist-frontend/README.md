@@ -34,3 +34,19 @@ Failed login can show the following notification:
 ![5.4](https://fullstackopen.com/static/5f30f6f454735133b39d706a3fa7f9c1/14be6/9e.png)
 
 The notifications must be visible for a few seconds. It is not compulsory to add colors.
+
+# Exercises 5.5.-5.10. [LINK to exercises](https://fullstackopen.com/en/part5/props_children_and_proptypes#exercises-5-5-5-10)
+
+## 5.5 Blog list frontend, step5
+Change the form for creating blog posts so that it is only displayed when appropriate.
+
+By default the form is not visible
+
+![5.5](https://fullstackopen.com/static/de4cfabdf46a837f1f0bfdba4fd27d67/14be6/13ae.png)
+
+It expands when button new note is clicked
+
+![5.5](https://fullstackopen.com/static/0cb27abc7b56ba5ecdd7e9d48d325c87/14be6/13be.png)
+
+The form closes when a new blog is created.
+

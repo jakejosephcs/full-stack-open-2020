@@ -3,6 +3,8 @@ import Blog from './components/Blog'
 import Message from './components/Message'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import LoginForm from './components/LoginForm'
+import CreateBlogForm from './components/CreateBlogForm'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
@@ -14,6 +16,7 @@ const App = () => {
   const [url, setUrl] = useState("")
   const [message, setMessage] = useState("")
   const [addedBlog, setAddedBlog] = useState("")
+  const [loginVisible, setLoginVisible] = useState(false)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -63,67 +66,57 @@ const App = () => {
     })
     setBlogs(blogs.concat(newBlog))
     setMessage('successful')
+    setTimeout(() => {
+      setMessage('')
+    }, 2500)
     setAddedBlog(newBlog)
     setTitle('')
     setAuthor('')
     setUrl('')
   }
 
-  if (user === null) {
+  const loginForm = () => {
     return(
-      <div>
-        <h2>Log in to application</h2>
-        <Message message={message} blog={addedBlog}/>
-        <form onSubmit={handleLogin}>
-            <div>
-              Username 
-              <input
-                type="text"
-                value={username}
-                name="Username"
-                onChange={({ target }) => setUsername(target.value)}
-              />
-            </div>
-            <div>
-              Password
-              <input
-                type="password"
-                value={password}
-                name="Password"
-                onChange={({ target }) => setPassword(target.value)}
-              />
-            </div>
-            <button type="Submit">Login</button>
-        </form>
-      </div>
+      <LoginForm 
+        handleSubmit={handleLogin} 
+        username={username} 
+        handleUsernameChange={({ target }) => setUsername(target.value)}
+        password={password}
+        handlePasswordChange={({ target }) => setPassword(target.value)}
+      />
     )
   }
 
-  return (
+  const blogForm = () => {
+    return(
+      <CreateBlogForm 
+        handleCreateBlog={handleCreateBlog}
+        title={title}
+        handleTitleChange={({ target }) => setTitle(target.value)}
+        author={author}
+        handleAuthorChange={({ target }) => setAuthor(target.value)}
+        url={url}
+        handleUrlChange={({ target }) => setUrl(target.value)}
+      />
+    )
+  }
+
+
+  return(
     <div>
-      <h2>Blogs</h2>
+      <h1>Blogs</h1>
       <Message message={message} blog={addedBlog}/>
-      <h3>{user.name} is logged in</h3>
-      <button onClick={handleLogout}>Logout</button>
-      <h2>Create New</h2>
-      <form onSubmit={handleCreateBlog}>
+      {user === null ?
+        loginForm() :
         <div>
-          title:
-          <input type="text" value={title} name="Title" onChange={({ target }) => setTitle(target.value)}/>
+          <h3>{user.name} is logged in</h3>
+          <button onClick={handleLogout}>Logout</button>
+          {blogForm()}
+          {blogs.map(blog =>
+            <Blog key={blog.id} blog={blog} />
+          )}
         </div>
-        <div>
-          author:
-          <input type="text" value={author} name="Author" onChange={({ target }) => setAuthor(target.value)} />
-        </div>
-        <div>
-          url:
-          <input type="text" value={url} name="Url" onChange={({ target }) => setUrl(target.value)}/>
-        </div>
-        <button type="submit">Create</button>
-      </form>
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
-      )}
+      }
     </div>
   )
 }
