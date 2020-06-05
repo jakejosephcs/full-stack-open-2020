@@ -1,7 +1,7 @@
 # Exercises 5.1.-5.4. [LINK to exercises](https://fullstackopen.com/en/part5/login_in_frontend#exercises-5-1-5-4)
 We will now create a frontend for the bloglist backend we created in the last part.
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 5.1: bloglist frontend, step1
+## 5.1: bloglist frontend, step1
 Implement login functionality to the frontend. The token returned with a successful login is saved to the application's state user.
 
 If a user is not logged in, only the login form is visible.
@@ -19,3 +19,7 @@ Make the login 'permanent' by using the local storage. Also implement a way to l
 
 Ensure the browser does not remember the details of the user after logging out.
 
+## 5.3: bloglist frontend, step3
+Expand your application to allow a logged in user to add new blogs:
+
+![5.3](https://fullstackopen.com/static/b9f4cf7f481e4f1358be610031afe219/14be6/7e.png)
