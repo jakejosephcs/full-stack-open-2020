@@ -23,3 +23,14 @@ Ensure the browser does not remember the details of the user after logging out.
 Expand your application to allow a logged in user to add new blogs:
 
 ![5.3](https://fullstackopen.com/static/b9f4cf7f481e4f1358be610031afe219/14be6/7e.png)
+
+## 5.4*: bloglist frontend, step4
+Implement notifications which inform the user about successful and unsuccessful operations at the top of the page. For example, when a new blog is added, the following notification can be shown:
+
+![5.4](https://fullstackopen.com/static/b9f4cf7f481e4f1358be610031afe219/14be6/7e.png)
+
+Failed login can show the following notification:
+
+![5.4](https://fullstackopen.com/static/5f30f6f454735133b39d706a3fa7f9c1/14be6/9e.png)
+
+The notifications must be visible for a few seconds. It is not compulsory to add colors.
