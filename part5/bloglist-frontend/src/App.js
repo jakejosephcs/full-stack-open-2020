@@ -5,18 +5,15 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import LoginForm from './components/LoginForm'
 import CreateBlogForm from './components/CreateBlogForm'
+import Togglable from './components/Togglable'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState([])
   const [password, setPassword] = useState([])
   const [user, setUser] = useState(null)
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [url, setUrl] = useState("")
   const [message, setMessage] = useState("")
   const [addedBlog, setAddedBlog] = useState("")
-  const [loginVisible, setLoginVisible] = useState(false)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -59,20 +56,14 @@ const App = () => {
     setUser(null)
   }
 
-  const handleCreateBlog = async (event) => {
-    event.preventDefault()
-    const newBlog = await blogService.create({
-      title, author, url,
-    })
+  const handleCreateBlog = async (blogObject) => {
+    const newBlog = await blogService.create(blogObject)
     setBlogs(blogs.concat(newBlog))
     setMessage('successful')
     setTimeout(() => {
       setMessage('')
     }, 2500)
     setAddedBlog(newBlog)
-    setTitle('')
-    setAuthor('')
-    setUrl('')
   }
 
   const loginForm = () => {
@@ -88,28 +79,12 @@ const App = () => {
   }
 
   const blogForm = () => {
-    const hideWhenVisible = {display: loginVisible ? 'none' : ''} 
-    const showWhenVisible = {display: loginVisible ? '' : 'none'}
-
     return(
-      <div>
-        <div style={hideWhenVisible}>
-          <button onClick={() => setLoginVisible(true)}>New Note</button>
-        </div>
-        <div style={showWhenVisible}>
-          <CreateBlogForm 
+      <Togglable buttonLabel='Create new Blog'>
+        <CreateBlogForm 
             handleCreateBlog={handleCreateBlog}
-            title={title}
-            handleTitleChange={({ target }) => setTitle(target.value)}
-            author={author}
-            handleAuthorChange={({ target }) => setAuthor(target.value)}
-            url={url}
-            handleUrlChange={({ target }) => setUrl(target.value)}
-            hideForm={() => setLoginVisible(false) }
-          />
-          <button onClick={() => setLoginVisible(false)}>Cancel</button>
-        </div>
-      </div>
+        />
+      </Togglable>
     )
   }
 
