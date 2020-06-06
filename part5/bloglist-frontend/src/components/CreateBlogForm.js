@@ -8,6 +8,7 @@ const CreateBlogForm = ({
     handleAuthorChange,
     url,
     handleUrlChange,
+    hideForm
 }) => {
     return (
         <div>
@@ -37,7 +38,7 @@ const CreateBlogForm = ({
                         onChange={handleUrlChange}
                     />
                 </div>
-                <button type="submit">Create</button>
+                <button type="submit" onClick={hideForm}>Create</button>
             </form>
         </div>
     )

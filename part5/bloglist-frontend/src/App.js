@@ -88,16 +88,28 @@ const App = () => {
   }
 
   const blogForm = () => {
+    const hideWhenVisible = {display: loginVisible ? 'none' : ''} 
+    const showWhenVisible = {display: loginVisible ? '' : 'none'}
+
     return(
-      <CreateBlogForm 
-        handleCreateBlog={handleCreateBlog}
-        title={title}
-        handleTitleChange={({ target }) => setTitle(target.value)}
-        author={author}
-        handleAuthorChange={({ target }) => setAuthor(target.value)}
-        url={url}
-        handleUrlChange={({ target }) => setUrl(target.value)}
-      />
+      <div>
+        <div style={hideWhenVisible}>
+          <button onClick={() => setLoginVisible(true)}>New Note</button>
+        </div>
+        <div style={showWhenVisible}>
+          <CreateBlogForm 
+            handleCreateBlog={handleCreateBlog}
+            title={title}
+            handleTitleChange={({ target }) => setTitle(target.value)}
+            author={author}
+            handleAuthorChange={({ target }) => setAuthor(target.value)}
+            url={url}
+            handleUrlChange={({ target }) => setUrl(target.value)}
+            hideForm={() => setLoginVisible(false) }
+          />
+          <button onClick={() => setLoginVisible(false)}>Cancel</button>
+        </div>
+      </div>
     )
   }
 
@@ -111,7 +123,9 @@ const App = () => {
         <div>
           <h3>{user.name} is logged in</h3>
           <button onClick={handleLogout}>Logout</button>
-          {blogForm()}
+          <div>
+            {blogForm()}
+          </div>
           {blogs.map(blog =>
             <Blog key={blog.id} blog={blog} />
           )}
