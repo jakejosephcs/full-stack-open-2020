@@ -66,6 +66,12 @@ const App = () => {
     setAddedBlog(newBlog)
   }
 
+  // const handleLikes = async (blogObject) => {
+  //   const newBlog = await blogService.updateLikes(blogObject)
+  //   setBlogs(blogs.filter(blog => blog.title !== newBlog.title))
+  //   setBlogs(blogs.concat(newBlog))
+  // }
+
   const loginForm = () => {
     return(
       <LoginForm 
@@ -102,7 +108,11 @@ const App = () => {
             {blogForm()}
           </div>
           {blogs.map(blog =>
-            <Blog key={blog.id} blog={blog} />
+            <Blog 
+              key={blog.id} 
+              blog={blog} 
+              // handleLikes={handleLikes}
+            />
           )}
         </div>
       }

@@ -1,5 +1,10 @@
 import React, {useState} from 'react'
-const Blog = ({ blog }) => {
+import blogService from '../services/blogs'
+
+const Blog = ({ 
+  blog, 
+  // handleLikes 
+}) => {
   const [show, setShow] = useState(true)
 
   const showWhenFalse = {display: show ? '' : 'none'}
@@ -12,6 +17,28 @@ const Blog = ({ blog }) => {
   const handleHide = () => {
     setShow(true)
   }
+
+  const increaseLikes = async () => {
+    await blogService.updateLikes({
+      _id: blog.id,
+      user: blog.user._id,
+      likes: blog.likes + 1,
+      author: blog.author,
+      title: blog.title,
+      url: blog.url
+    })
+  }
+
+  // const updateLikes = async (event) => {
+  //   await handleLikes({
+  //     _id: blog.id,
+  //     user: blog.user._id,
+  //     likes: blog.likes + 1,
+  //     author: blog.author,
+  //     title: blog.title,
+  //     url: blog.url
+  //   })
+  // }
 
   const blogStyle = {
     paddingTop: 10,
@@ -32,7 +59,7 @@ const Blog = ({ blog }) => {
         <div>{blog.url}</div>
         <div>
           {blog.likes}
-          <button>likes</button>
+          <button onClick={increaseLikes}>likes</button>
         </div>
         <div>{blog.author}</div>
       </div>
