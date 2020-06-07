@@ -57,6 +57,7 @@ const App = () => {
   }
 
   const handleCreateBlog = async (blogObject) => {
+    blogFormRef.current.toggleVisibility()
     const newBlog = await blogService.create(blogObject)
     setBlogs(blogs.concat(newBlog))
     setMessage('successful')
@@ -65,12 +66,6 @@ const App = () => {
     }, 2500)
     setAddedBlog(newBlog)
   }
-
-  // const handleLikes = async (blogObject) => {
-  //   const newBlog = await blogService.updateLikes(blogObject)
-  //   setBlogs(blogs.filter(blog => blog.title !== newBlog.title))
-  //   setBlogs(blogs.concat(newBlog))
-  // }
 
   const loginForm = () => {
     return(
@@ -84,9 +79,11 @@ const App = () => {
     )
   }
 
+  const blogFormRef = React.createRef()
+
   const blogForm = () => {
     return(
-      <Togglable buttonLabel='Create new Blog'>
+      <Togglable buttonLabel='Create new Blog' ref={blogFormRef}>
         <CreateBlogForm 
             handleCreateBlog={handleCreateBlog}
         />
@@ -111,7 +108,6 @@ const App = () => {
             <Blog 
               key={blog.id} 
               blog={blog} 
-              // handleLikes={handleLikes}
               currentUser={user}
             />
           )}
