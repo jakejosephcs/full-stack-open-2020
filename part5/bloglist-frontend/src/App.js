@@ -112,6 +112,7 @@ const App = () => {
               key={blog.id} 
               blog={blog} 
               // handleLikes={handleLikes}
+              currentUser={user}
             />
           )}
         </div>

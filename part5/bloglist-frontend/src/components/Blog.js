@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import blogService from '../services/blogs'
+import Remove from '../components/Remove'
 
 const Blog = ({ 
   blog, 
-  // handleLikes 
+  // handleLikes, 
+  currentUser
 }) => {
   const [show, setShow] = useState(true)
 
@@ -48,6 +50,17 @@ const Blog = ({
     marginBottom: 5
   }
 
+  const showRemoveButton = () => {
+    if (currentUser.username === blog.user.username) {
+      return (
+        <>
+          <button>Remove</button>
+        </>
+      ) 
+    }
+    return null
+  }
+
   return(
     <div style={blogStyle}>
       {blog.title} by {blog.author}
@@ -62,6 +75,7 @@ const Blog = ({
           <button onClick={increaseLikes}>likes</button>
         </div>
         <div>{blog.author}</div>
+        <Remove currentUser={currentUser} blog={blog} />
       </div>
     </div>
   )

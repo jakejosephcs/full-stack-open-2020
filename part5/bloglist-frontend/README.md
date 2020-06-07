@@ -69,3 +69,13 @@ Implement the functionality for the like button
 
 ## 5.9*: Blog list frontend, step9
 Modify the application to list the blog posts by the number of likes.
+
+## 5.10*: Blog list frontend, step10
+Add a new button for deleting blog posts. Also implement the logic for deleting blog posts in the backend.
+
+Your application could look something like this:
+
+![5.10](https://fullstackopen.com/static/87b7180f1f10ce670af1bc21f50233ec/14be6/14ea.png)
+
+Show the button for deleting a blog post only if the blog post was added by the user.
+
