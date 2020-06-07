@@ -64,3 +64,8 @@ And the details are hidden when the button is clicked again.
 
 At this point the like button does not need to do anything.
 
+## 5.8*: Blog list frontend, step8
+Implement the functionality for the like button
+
+## 5.9*: Blog list frontend, step9
+Modify the application to list the blog posts by the number of likes.
