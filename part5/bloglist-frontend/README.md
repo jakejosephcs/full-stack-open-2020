@@ -53,3 +53,14 @@ The form closes when a new blog is created.
 ## 5.6 Blog list frontend, step6
 Separate the form for creating a new blog into its own component (if you have not already done so), and move all the states required for creating a new blog to this component.
 
+## 5.7* Blog list frontend, step7
+Let's add each blog a button, which controls if all of the details about the blog are shown or not.
+
+Full details of the blog open when the button is clicked.
+
+![5.7](https://fullstackopen.com/static/b49e9ca45d0582829eed343baad44910/14be6/13ea.png)
+
+And the details are hidden when the button is clicked again.
+
+At this point the like button does not need to do anything.
+

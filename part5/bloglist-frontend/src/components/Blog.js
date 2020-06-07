@@ -1,8 +1,43 @@
-import React from 'react'
-const Blog = ({ blog }) => (
-  <div>
-    {blog.title} {blog.author}
-  </div>
-)
+import React, {useState} from 'react'
+const Blog = ({ blog }) => {
+  const [show, setShow] = useState(true)
+
+  const showWhenFalse = {display: show ? '' : 'none'}
+  const hideWhenTrue = {display: show ? 'none' : ''}
+
+  const handleShow = () => {
+    setShow(false)
+  }
+
+  const handleHide = () => {
+    setShow(true)
+  }
+
+  const blogStyle = {
+    paddingTop: 10,
+    paddingLeft: 2,
+    border: 'solid',
+    borderWidth: 1,
+    marginBottom: 5
+  }
+
+  return(
+    <div style={blogStyle}>
+      {blog.title} by {blog.author}
+      <div style={showWhenFalse}>
+        <button onClick={handleShow}>View</button>
+      </div>
+      <div style={hideWhenTrue}>
+        <button onClick={handleHide}>Hide</button>
+        <div>{blog.url}</div>
+        <div>
+          {blog.likes}
+          <button>likes</button>
+        </div>
+        <div>{blog.author}</div>
+      </div>
+    </div>
+  )
+}
 
 export default Blog
