@@ -79,3 +79,4 @@ Your application could look something like this:
 
 Show the button for deleting a blog post only if the blog post was added by the user.
 
+# Exercises 5.5.-5.10. [LINK to exercises](https://fullstackopen.com/en/part5/props_children_and_proptypes#exercises-5-11-5-12)
