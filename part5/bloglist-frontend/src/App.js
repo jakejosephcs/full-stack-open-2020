@@ -12,13 +12,13 @@ const App = () => {
   const [username, setUsername] = useState([])
   const [password, setPassword] = useState([])
   const [user, setUser] = useState(null)
-  const [message, setMessage] = useState("")
-  const [addedBlog, setAddedBlog] = useState("")
+  const [message, setMessage] = useState('')
+  const [addedBlog, setAddedBlog] = useState('')
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
-    )  
+    )
   }, [])
 
   useEffect(() => {
@@ -44,14 +44,14 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setMessage("Wrong Username or Password")
+      setMessage('Wrong Username or Password')
       setTimeout(() => {
         setMessage('')
       }, 2500)
     }
   }
 
-  const handleLogout = async (event) => {
+  const handleLogout = async () => {
     await window.localStorage.clear()
     setUser(null)
   }
@@ -69,9 +69,9 @@ const App = () => {
 
   const loginForm = () => {
     return(
-      <LoginForm 
-        handleSubmit={handleLogin} 
-        username={username} 
+      <LoginForm
+        handleSubmit={handleLogin}
+        username={username}
         handleUsernameChange={({ target }) => setUsername(target.value)}
         password={password}
         handlePasswordChange={({ target }) => setPassword(target.value)}
@@ -84,8 +84,8 @@ const App = () => {
   const blogForm = () => {
     return(
       <Togglable buttonLabel='Create new Blog' ref={blogFormRef}>
-        <CreateBlogForm 
-            handleCreateBlog={handleCreateBlog}
+        <CreateBlogForm
+          handleCreateBlog={handleCreateBlog}
         />
       </Togglable>
     )
@@ -105,9 +105,9 @@ const App = () => {
             {blogForm()}
           </div>
           {blogs.sort((a,b) => b.likes - a.likes).map(blog =>
-            <Blog 
-              key={blog.id} 
-              blog={blog} 
+            <Blog
+              key={blog.id}
+              blog={blog}
               currentUser={user}
             />
           )}

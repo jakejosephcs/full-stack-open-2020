@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import blogService from '../services/blogs'
 import Remove from '../components/Remove'
 
-const Blog = ({ 
-  blog, 
-  // handleLikes, 
+const Blog = ({
+  blog,
+  // handleLikes,
   currentUser
 }) => {
   const [show, setShow] = useState(true)
 
-  const showWhenFalse = {display: show ? '' : 'none'}
-  const hideWhenTrue = {display: show ? 'none' : ''}
+  const showWhenFalse = { display: show ? '' : 'none' }
+  const hideWhenTrue = { display: show ? 'none' : '' }
 
   const handleShow = () => {
     setShow(false)
@@ -48,17 +48,6 @@ const Blog = ({
     border: 'solid',
     borderWidth: 1,
     marginBottom: 5
-  }
-
-  const showRemoveButton = () => {
-    if (currentUser.username === blog.user.username) {
-      return (
-        <>
-          <button>Remove</button>
-        </>
-      ) 
-    }
-    return null
   }
 
   return(
