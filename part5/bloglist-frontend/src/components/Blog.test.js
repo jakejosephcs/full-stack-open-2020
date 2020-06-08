@@ -52,3 +52,31 @@ test('renders blog url, number of likes when VIEW is clicked', () => {
   expect(component.container).toHaveTextContent(blog.likes)
 
 })
+
+test('Click like button twice increases likes twice', () => {
+  const blog = {
+    title: 'Test title',
+    author: 'Test author',
+    url: 'testurl.com',
+    likes: 3,
+  }
+
+  other.handleLikes = jest.fn()
+
+  const component = render(
+    <Blog
+      blog={blog}
+      {... other}
+    />
+  )
+
+  const viewButton = component.getByText('View')
+  fireEvent.click(viewButton)
+
+  const likeButton = component.getByText('like')
+  fireEvent.click(likeButton)
+  fireEvent.click(likeButton)
+
+  expect(other.handleLikes.mock.calls).toHaveLength(2)
+
+})
