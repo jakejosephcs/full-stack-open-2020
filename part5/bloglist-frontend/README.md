@@ -79,4 +79,18 @@ Your application could look something like this:
 
 Show the button for deleting a blog post only if the blog post was added by the user.
 
-# Exercises 5.5.-5.10. [LINK to exercises](https://fullstackopen.com/en/part5/props_children_and_proptypes#exercises-5-11-5-12)
+# Exercises 5.11.-5.12. [LINK to exercises](https://fullstackopen.com/en/part5/props_children_and_proptypes#exercises-5-11-5-12)
+
+## 5.11: Blog list frontend, step11
+Define PropTypes for one of the components of your application.
+
+## 5.12: Blog list frontend, step12
+Add ESlint to the project. Define the configuration according to your liking. Fix all of the linter errors.
+
+# Exercises 5.13.-5.16. [LINK to exercises](https://fullstackopen.com/en/part5/testing_react_apps#exercises-5-13-5-16)
+## 5.13: Blog list tests, step1
+Make a test which checks that the component displaying a blog renders the blog's title and author, but does not render its url or number of likes by default
+
+Add CSS-classes to the component to help the testing as necessary.
+
+

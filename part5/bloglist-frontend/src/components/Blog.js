@@ -1,46 +1,14 @@
 import React, { useState } from 'react'
-import blogService from '../services/blogs'
-import Remove from '../components/Remove'
 
 const Blog = ({
   blog,
-  // handleLikes,
-  currentUser
+  handleLikes,
+  currentUsersBlog,
+  handleRemove
 }) => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
 
-  const showWhenFalse = { display: show ? '' : 'none' }
-  const hideWhenTrue = { display: show ? 'none' : '' }
-
-  const handleShow = () => {
-    setShow(false)
-  }
-
-  const handleHide = () => {
-    setShow(true)
-  }
-
-  const increaseLikes = async () => {
-    await blogService.updateLikes({
-      _id: blog.id,
-      user: blog.user._id,
-      likes: blog.likes + 1,
-      author: blog.author,
-      title: blog.title,
-      url: blog.url
-    })
-  }
-
-  // const updateLikes = async (event) => {
-  //   await handleLikes({
-  //     _id: blog.id,
-  //     user: blog.user._id,
-  //     likes: blog.likes + 1,
-  //     author: blog.author,
-  //     title: blog.title,
-  //     url: blog.url
-  //   })
-  // }
+  const label = show ? 'Hide' : 'View'
 
   const blogStyle = {
     paddingTop: 10,
@@ -50,22 +18,23 @@ const Blog = ({
     marginBottom: 5
   }
 
+
   return(
     <div style={blogStyle}>
-      {blog.title} by {blog.author}
-      <div style={showWhenFalse}>
-        <button onClick={handleShow}>View</button>
+      <div>
+        <i>{blog.title}</i> by {blog.author} <button onClick={() => setShow(!show)}>{label}</button>
       </div>
-      <div style={hideWhenTrue}>
-        <button onClick={handleHide}>Hide</button>
+      {show &&
+      <div>
         <div>{blog.url}</div>
         <div>
           {blog.likes}
-          <button onClick={increaseLikes}>likes</button>
+          <button onClick={ () => handleLikes(blog.id) }>likes</button>
         </div>
         <div>{blog.author}</div>
-        <Remove currentUser={currentUser} blog={blog} />
+        {currentUsersBlog ? <button onClick={ () => handleRemove(blog.id) }>Remove</button> : null}
       </div>
+      }
     </div>
   )
 }

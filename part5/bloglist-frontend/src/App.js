@@ -67,6 +67,22 @@ const App = () => {
     setAddedBlog(newBlog)
   }
 
+  const handleLikes = async (id) => {
+    const blogToLike = blogs.find(b => b.id === id)
+    const likedBlog = { ...blogToLike, likes: blogToLike.likes + 1, user: blogToLike.user.id }
+    await blogService.update(likedBlog)
+    setBlogs(blogs.map(b => b.id === id ? { ...blogToLike, likes: blogToLike.likes + 1 } : b))
+  }
+
+  const handleRemove = async (id) => {
+    const blogToRemove = blogs.find(b => b.id === id)
+    const ok = window.confirm(`Remove blog "${blogToRemove.title}" by ${blogToRemove.author}?`)
+    if (ok) {
+      await blogService.deleteBlog(blogToRemove)
+      setBlogs(blogs.filter(b => b.id !== id))
+    }
+  }
+
   const loginForm = () => {
     return(
       <LoginForm
@@ -108,7 +124,9 @@ const App = () => {
             <Blog
               key={blog.id}
               blog={blog}
-              currentUser={user}
+              currentUsersBlog={user.username === blog.user.username}
+              handleLikes={handleLikes}
+              handleRemove={handleRemove}
             />
           )}
         </div>
