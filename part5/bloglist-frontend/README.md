@@ -98,3 +98,27 @@ Make a test which checks that blog's url and number of likes are shown when the 
 
 ## 5.15: Blog list tests, step3
 Make a test which ensures that if the like button is clicked twice, the event handler the component received as props is called twice.
+
+## 5.16*: Blog list tests, step4
+Make a test for the new blog form. The test should check, that the form calls the event handler it received as props with the right details when a new blog is called.
+
+# Exercises 5.17.-5.22. [LINK to exercises](https://fullstackopen.com/en/part5/end_to_end_testing#exercises-5-17-5-22)
+In the last exercises of this part we will do some E2E tests for our blog application. 
+
+## 5.17: bloglist end to end testing, step1
+Configure Cypress to your project. Make a test for checking that the application displays the login form by default.
+
+The structure of the test must be as follows
+
+```javascript
+describe('Blog app', function() {
+  beforeEach(function() {
+    cy.request('POST', 'http://localhost:3001/api/testing/reset')
+    cy.visit('http://localhost:3000')
+  })
+
+  it('Login form is shown', function() {
+    // ...
+  })
+})
+```
