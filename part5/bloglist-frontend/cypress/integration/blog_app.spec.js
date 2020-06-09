@@ -1,3 +1,4 @@
+import { func } from "prop-types"
 
 describe('Blog app', function () {
   beforeEach(function() {
@@ -51,6 +52,36 @@ describe('Blog app', function () {
       cy.get('#create').click()
 
       cy.contains('Learning about Cypress by Cypress')
+    })
+  })
+
+  describe('A blog has been created', function() {
+    beforeEach(function() {
+      cy.get('#username').click().type('jjoseph')
+      cy.get('#password').click().type('jjcs2020')
+      cy.get('#login').click()
+
+      cy.get('#showCreateNewBlog').click()
+      cy.contains('Create New Blog')
+      cy.get('#title').click().type('Learning about Cypress')
+      cy.get('#author').click().type('Cypress')
+      cy.get('#url').click().type('https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell')
+      cy.get('#create').click()
+    })
+
+    it('user can like the blog', function() {
+      cy.get('.view').click()
+      cy.contains('Cypress')
+      cy.contains('0')
+      cy.contains('Learning about Cypress')
+
+      cy.contains('like').click()
+      cy.contains('1')
+
+      cy.contains('like').click()
+      cy.contains('2')
+
+      cy.get('.hide').click()
     })
   })
 })

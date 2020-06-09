@@ -175,3 +175,6 @@ Make a test which checks that a logged in user can create a new blog. The struct
 ```
 
 The test has to ensure that a new blog is added to the list of all blogs.
+
+## 5.20: bloglist end to end testing, step4
+Make a test which checks that user can like a blog.

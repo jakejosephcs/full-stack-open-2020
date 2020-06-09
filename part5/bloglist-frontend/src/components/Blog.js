@@ -8,7 +8,7 @@ const Blog = ({
 }) => {
   const [show, setShow] = useState(false)
 
-  const label = show ? 'Hide' : 'View'
+  const label = show ? 'hide' : 'view'
 
   const blogStyle = {
     paddingTop: 10,
@@ -22,7 +22,7 @@ const Blog = ({
   return(
     <div style={blogStyle}>
       <div>
-        <i>{blog.title}</i> by {blog.author} <button onClick={() => setShow(!show)}>{label}</button>
+        <i>{blog.title}</i> by {blog.author} <button onClick={() => setShow(!show)} className={label}>{label}</button>
       </div>
       {show &&
       <div>
