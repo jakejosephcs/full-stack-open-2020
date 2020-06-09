@@ -57,8 +57,8 @@ const App = () => {
   }
 
   const handleCreateBlog = async (blogObject) => {
-    blogFormRef.current.toggleVisibility()
     const newBlog = await blogService.create(blogObject)
+    blogFormRef.current.toggleVisibility()
     setBlogs(blogs.concat(newBlog))
     setMessage('successful')
     setTimeout(() => {
