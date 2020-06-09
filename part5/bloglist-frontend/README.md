@@ -181,3 +181,9 @@ Make a test which checks that user can like a blog.
 
 ## 5.21: bloglist end to end testing, step5
 Make a test for ensuring that the user who created a blog can delete it.
+
+Optional bonus exercise: also check that other users cannot delete the blog.
+
+## 5.22: bloglist end end testing, step 6
+Make a test which checks that the blogs are ordered according to likes with the blog with the most likes being first.
+

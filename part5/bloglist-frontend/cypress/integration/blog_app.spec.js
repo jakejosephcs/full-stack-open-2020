@@ -59,20 +59,20 @@ describe('Blog app', function () {
 
   describe('Blogs have been created from multiple users', function() {
     beforeEach(function() {
-      cy.login({ username: 'jjoseph', password: 'jjcs2020'})
+      cy.login({ username: 'jjoseph', password: 'jjcs2020' })
       cy.get('#username').type('jjoseph')
       cy.get('#password').type('jjcs2020')
       cy.get('#login').click()
 
-      cy.createBlog({ author: 'John Doe', title: 'test1', url: 'exampleurl1.com' })
-      cy.createBlog({ author: 'John Doe', title: 'test2', url: 'exampleurl2.com' })
+      cy.createBlog({ author: 'John Doe', title: 'test1', url: '123.com' })
+      cy.createBlog({ author: 'Josh Eod', title: 'test2', url: '456.com' })
       cy.contains('Logout').click()
 
       cy.login({ username: 'ljoseph', password: 'ljcs2020' })
       cy.get('#username').type('ljoseph')
       cy.get('#password').type('ljcs2020')
       cy.get('#login').click()
-      cy.createBlog({ author: 'Jane Doe', title: 'test3', url: 'exampleurl3.com' })
+      cy.createBlog({ author: 'Jane Oed', title: 'test3', url: '789.com' })
 
       cy.contains('test1').parent().parent().as('blog1')
       cy.contains('test2').parent().parent().as('blog2')
@@ -83,6 +83,27 @@ describe('Blog app', function () {
       cy.get('@blog3').contains('view').click()
       cy.get('@blog3').contains('like').click()
       cy.get('@blog3').contains('likes 1')
+    })
+
+    it('Blogs are ordered according to likes', function() {
+      cy.get('@blog1').contains('view').click()
+      cy.get('@blog2').contains('view').click()
+      cy.get('@blog3').contains('view').click()
+
+      cy.get('@blog1').contains('like').click()
+      cy.get('@blog1').contains('like').click()
+      cy.get('@blog1').contains('like').click()
+      cy.get('@blog1').contains('like').click()
+      cy.get('@blog2').contains('like').click()
+      cy.get('@blog2').contains('like').click()
+      cy.get('@blog2').contains('like').click()
+      cy.get('@blog3').contains('like').click()
+
+      cy.get('.blog').then(blogs => {
+        cy.wrap(blogs[0]).contains('likes 2')
+        cy.wrap(blogs[1]).contains('likes 1')
+        cy.wrap(blogs[2]).contains('likes 1')
+      })
     })
 
     it('Can be deleted', function() {
