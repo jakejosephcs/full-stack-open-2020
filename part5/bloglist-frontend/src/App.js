@@ -78,7 +78,7 @@ const App = () => {
     const blogToRemove = blogs.find(b => b.id === id)
     const ok = window.confirm(`Remove blog "${blogToRemove.title}" by ${blogToRemove.author}?`)
     if (ok) {
-      await blogService.deleteBlog(blogToRemove)
+      await blogService.deleteBlog(blogToRemove.id)
       setBlogs(blogs.filter(b => b.id !== id))
     }
   }

@@ -28,10 +28,10 @@ const Blog = ({
       <div>
         <div>{blog.url}</div>
         <div>
-          {blog.likes}
+          likes {blog.likes}
           <button onClick={ () => handleLikes(blog.id) }>like</button>
         </div>
-        <div>{blog.author}</div>
+        <div>{blog.user.name}</div>
         {currentUsersBlog ? <button onClick={ () => handleRemove(blog.id) }>Remove</button> : null}
       </div>
       }
