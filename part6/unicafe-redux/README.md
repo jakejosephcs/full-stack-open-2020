@@ -87,3 +87,7 @@ Implement the reducer and its tests.
 In the tests, make sure that the reducer is an immutable function with the deep-freeze-library. Ensure that the provided first test passes, because Redux expects that the reducer returns a sensible original state when it is called so that the first parameter state, which represents the previous state, is undefined.
 
 Start by expanding the reducer so that both tests pass. Then add the rest of the tests, and finally the functionality which they are testing.
+
+## 6.2: unicafe revisited, step2
+Now implement the actual functionality of the application.
+
