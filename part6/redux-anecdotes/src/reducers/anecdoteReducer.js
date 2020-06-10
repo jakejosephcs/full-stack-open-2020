@@ -19,7 +19,7 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
+const anecdoteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'VOTE':
       const id = action.data.id
@@ -40,4 +40,25 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+
+// It is actually not necessary for React-components to know the Redux action types and forms. 
+// Let's separate creating actions into their own functions:
+export const createAnecdote = (content) => {
+  return {
+    type: 'NEW_ANECDOTE',
+    data: {
+      content,
+      id : getId(),
+      votes: 0
+    }
+  }
+}
+
+export const voteForAnecdote = (id) => {
+  return {
+    type: 'VOTE',
+    data: { id }
+  }
+}
+
+export default anecdoteReducer
