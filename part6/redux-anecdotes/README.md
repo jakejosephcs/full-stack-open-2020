@@ -6,3 +6,6 @@ Implement the functionality for voting anecdotes. The amount of votes must be sa
 
 ## 6.4: anecdotes, step2
 Implement the functionality for adding new anecdotes.
+
+## 6.5*: anecdotes, step3
+Make sure that the anecdotes are ordered by the number of votes.
