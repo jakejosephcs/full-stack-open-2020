@@ -12,3 +12,7 @@ Make sure that the anecdotes are ordered by the number of votes.
 
 ## 6.6: anecdotes, step4
 If you haven't done so already, separate the creation of action-objects to action creator-functions and place them in the ```src/reducers/anecdoteReducer.js``` file.
+
+## 6.7: anecdotes, step5
+Separate the creation of new anecdotes into its own component called AnecdoteForm. Move all logic for creating a new anecdote into this new component.
+
