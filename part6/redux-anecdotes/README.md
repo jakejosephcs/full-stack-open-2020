@@ -19,3 +19,9 @@ Separate the creation of new anecdotes into its own component called AnecdoteFor
 ## 6.8: anecdotes, step6
 Separate the rendering of the anecdote list into its own component called AnecdoteList. Move all logic related to voting for an anecdote to this new component.
 
+# Exercises 6.9.-6.12. [LINK to exercises](https://fullstackopen.com/en/part6/many_reducers#exercises-6-9-6-12)
+Let's continue working on the anecdote application using redux that we started in exercise 6.3.
+
+## 6.9 Better anecdotes, step7
+Start using React dev tools. Move defining the Redux-store into its own file store.js.
+
