@@ -67,3 +67,8 @@ const Notification = () => {
   )
 }
 ```
+
+## 6.11 Better anecdotes, step9
+Extend the application so that it uses the Notification component to display a message for the duration of five seconds when the user votes for an anecdote or creates a new anecdote:
+
+![6.11](https://fullstackopen.com/static/c82fb74270b3ca5ce1edef02e2cf82bd/14be6/8ea.png)
