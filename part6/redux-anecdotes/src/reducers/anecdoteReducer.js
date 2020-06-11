@@ -1,4 +1,4 @@
-const getId = () => (100000 * Math.random()).toFixed(0)
+// const getId = () => (100000 * Math.random()).toFixed(0)
 
 // import anecdotes from "../../services/anecdotes"
 
@@ -25,7 +25,7 @@ const anecdoteReducer = (state = [], action) => {
     case 'NEW_ANECDOTE':
       return state.concat({
         content: action.data.content,
-        id: getId(),
+        // id: getId(),
         votes: 0
       })
     case 'INIT_ANECDOTES':
@@ -45,15 +45,11 @@ export const initializeAnecdotes = (anecdotes) => {
 
 // It is actually not necessary for React-components to know the Redux action types and forms. 
 // Let's separate creating actions into their own functions:
-export const createAnecdote = (content) => {
+export const createAnecdote = (data) => {
   return {
     type: 'NEW_ANECDOTE',
-    data: {
-      content,
-      id : getId(),
-      votes: 0
+    data
     }
-  }
 }
 
 export const voteForAnecdote = (id) => {

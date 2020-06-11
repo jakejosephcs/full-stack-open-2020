@@ -83,7 +83,11 @@ Store the state of the filter in the redux store. It is recommended to create a 
 Create a new Filter component for displaying the filter.
 
 # Exercises 6.13.-6.14. [LINK to exercises](https://fullstackopen.com/en/part6/communicating_with_server_in_a_redux_application#exercises-6-13-6-14)
+
 ## 6.13 Anecdotes and the backend, step1
 
 When the application launches, fetch the anecdotes from the backend implemented using json-server.
 
+## 6.14 Anecdotes and the backend, step2
+
+Modify the creation of new anecdotes, such that the anecdotes are stored in the backend.
