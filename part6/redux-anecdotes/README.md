@@ -91,3 +91,9 @@ When the application launches, fetch the anecdotes from the backend implemented 
 ## 6.14 Anecdotes and the backend, step2
 
 Modify the creation of new anecdotes, such that the anecdotes are stored in the backend.
+
+# Exercises 6.15.-6.18. [LINK to exercises](https://fullstackopen.com/en/part6/communicating_with_server_in_a_redux_application#exercises-6-15-6-18)
+
+## 6.15 Anecdotes and the backend, step3
+Modify the initialization of redux-store to happen using asynchronous action creators, which are made possible by the redux-thunk-library.
+

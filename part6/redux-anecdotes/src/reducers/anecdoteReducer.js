@@ -12,6 +12,9 @@
 
 // const initialState = anecdotesAtStart.map(asObject)
 
+import anecdoteServices from '../services/anecdotes'
+import { useDispatch } from 'react-redux'
+
 const anecdoteReducer = (state = [], action) => {
   switch (action.type) {
     case 'VOTE':
@@ -35,10 +38,13 @@ const anecdoteReducer = (state = [], action) => {
   }
 }
 
-export const initializeAnecdotes = (anecdotes) => {
-  return {
-    type: 'INIT_ANECDOTES',
-    data: anecdotes
+export const initializeAnecdotes = () => {
+  return async dispatch => {
+    const anecdotes = await anecdoteServices.getAll()
+    dispatch({
+      type: 'INIT_ANECDOTES',
+      data: anecdotes
+    })
   }
 }
 
@@ -46,9 +52,12 @@ export const initializeAnecdotes = (anecdotes) => {
 // It is actually not necessary for React-components to know the Redux action types and forms. 
 // Let's separate creating actions into their own functions:
 export const createAnecdote = (data) => {
-  return {
-    type: 'NEW_ANECDOTE',
-    data
+  return async dispatch => {
+    const newAnecdote = await anecdoteServices.createNew(data)
+    dispatch({
+      type: 'NEW_ANECDOTE',
+      data: newAnecdote
+    })
     }
 }
 
