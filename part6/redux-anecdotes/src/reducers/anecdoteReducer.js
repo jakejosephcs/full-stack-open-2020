@@ -13,7 +13,6 @@
 // const initialState = anecdotesAtStart.map(asObject)
 
 import anecdoteServices from '../services/anecdotes'
-import { useDispatch } from 'react-redux'
 
 const anecdoteReducer = (state = [], action) => {
   switch (action.type) {
