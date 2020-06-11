@@ -25,3 +25,45 @@ Let's continue working on the anecdote application using redux that we started i
 ## 6.9 Better anecdotes, step7
 Start using React dev tools. Move defining the Redux-store into its own file store.js.
 
+## 6.10 Better anecdotes, step8
+The application has a ready-made body for the Notification component:
+
+```javascript
+import React from 'react'
+
+const Notification = () => {
+  const style = {
+    border: 'solid',
+    padding: 10,
+    borderWidth: 1
+  }
+  return (
+    <div style={style}>
+      render here notification...
+    </div>
+  )
+}
+
+export default Notification
+```
+
+Extend the component so that it renders the message stored in the redux store, making the component to take the form:
+
+```javascript
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+const Notification = () => {
+  const notification = useSelector(/* something here */)
+  const style = {
+    border: 'solid',
+    padding: 10,
+    borderWidth: 1
+  }
+  return (
+    <div style={style}>
+      {notification}
+    </div>
+  )
+}
+```
