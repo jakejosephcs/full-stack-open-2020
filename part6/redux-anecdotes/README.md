@@ -72,3 +72,12 @@ const Notification = () => {
 Extend the application so that it uses the Notification component to display a message for the duration of five seconds when the user votes for an anecdote or creates a new anecdote:
 
 ![6.11](https://fullstackopen.com/static/c82fb74270b3ca5ce1edef02e2cf82bd/14be6/8ea.png)
+
+## 6.12* Better anecdotes, step10
+Implement filtering for the anecdotes that are displayed to the user.
+
+![6.12](https://fullstackopen.com/static/e64e260dbd3b22669115b6eb9dcce7a5/14be6/9ea.png)
+
+Store the state of the filter in the redux store. It is recommended to create a new reducer and action creators for this purpose.
+
+Create a new Filter component for displaying the filter.
