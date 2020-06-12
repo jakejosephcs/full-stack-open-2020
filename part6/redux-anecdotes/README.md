@@ -116,3 +116,22 @@ dispatch(setNotification(`you voted '${anecdote.content}'`, 10))
 The first parameter is the text to be rendered and the second parameter is the time to display the notification given in seconds.
 
 Implement the use of this improved notification in your application.
+
+# Exercises 6.19.-6.21. [LINK to exercises](https://fullstackopen.com/en/part6/connect#exercises-6-19-6-21)
+## 6.19 anecdotes and connect, step1
+Add the react-redux package to your application, and modify the AnecdoteList so that it accesses the store's state with the help of the connect function.
+
+Voting for and creating new anecdotes does not need to work after this exercise.
+
+The mapStateToProps function you will need in this exercise is approximately the following:
+
+```javascript
+const mapStateToProps = (state) => {
+  // sometimes it is useful to console log from mapStateToProps
+  console.log(state)
+  return {
+    anecdotes: state.anecdotes,
+    filter: state.filter
+  }
+}
+```
