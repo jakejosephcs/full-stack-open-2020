@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createAnecdote } from '../reducers/anecdoteReducer'
-import { setNotification } from '../reducers/notificationReducer'
+import { setNotification, clearNotification } from '../reducers/notificationReducer'
 
 const AnecdoteForm = (props) => {
 
@@ -11,9 +11,6 @@ const AnecdoteForm = (props) => {
         event.target.anecdoteContent.value = ''
         props.createAnecdote(content)
         props.setNotification(`Anecdote "${content}" has been created`, 5)
-        setTimeout(() => {
-            props.setNotification()
-        }, 5000)
     }
 
     return(
@@ -32,6 +29,7 @@ const AnecdoteForm = (props) => {
 const mapDispatchToProps = {
     createAnecdote,
     setNotification,
+    clearNotification
 }
 
 const ConnectedAnecdoteForm = connect(
