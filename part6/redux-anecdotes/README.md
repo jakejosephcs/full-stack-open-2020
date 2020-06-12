@@ -135,3 +135,5 @@ const mapStateToProps = (state) => {
   }
 }
 ```
+
+## 6.20 anecdotes and connect, step2
