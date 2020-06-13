@@ -29,3 +29,9 @@ The default functionality of the creation form is quite confusing, because nothi
 Improve the functionality such that after creating a new anecdote the application transitions automatically to showing the view for all anecdotes and the user is shown a notification informing them of this successful creation for the next 10 seconds:
 
 ![7.3](https://fullstackopen.com/static/7640caca8b2a611c4f6203f343b996f9/14be6/44.png)
+
+# Exercises 7.4.-7.8. [LINK to exercises](https://fullstackopen.com/en/part7/custom_hooks#exercises-7-4-7-8)
+
+## 7.4: anecdotes and hooks step1
+Simplify the anecdote creation form of your application with the ```useField``` custom hook we defined earlier.
+
