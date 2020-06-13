@@ -22,3 +22,10 @@ Implement a view for showing a single anecdote:
 Navigating to the page showing the single anecdote is done by clicking the name of that anecdote
 
 ![7.2](https://fullstackopen.com/static/116f966d64a03287b86a6e6a03f6ba81/14be6/43.png)
+
+## 7.3: routed anecdotes, step3
+The default functionality of the creation form is quite confusing, because nothing seems to be happening after creating a new anecdote using the form.
+
+Improve the functionality such that after creating a new anecdote the application transitions automatically to showing the view for all anecdotes and the user is shown a notification informing them of this successful creation for the next 10 seconds:
+
+![7.3](https://fullstackopen.com/static/7640caca8b2a611c4f6203f343b996f9/14be6/44.png)
