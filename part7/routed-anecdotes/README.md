@@ -35,3 +35,16 @@ Improve the functionality such that after creating a new anecdote the applicatio
 ## 7.4: anecdotes and hooks step1
 Simplify the anecdote creation form of your application with the ```useField``` custom hook we defined earlier.
 
+## 7.5: anecdotes and hooks step2
+Add a button to the form that you can use to clear all the input fields:
+
+![7.5](https://fullstackopen.com/static/1bce1cdac08279ba132f61a614900b94/14be6/61ea.png)
+
+Expand the functionality of the useField hook so that it offers a new reset operation for clearing the field.
+
+Depending on your solution you may see the following warning in your console:
+
+![7.5](https://fullstackopen.com/static/c4f6d266117f4d881d1df60a4ca3b9f5/14be6/62ea.png)
+
+We will return to this warning in the next exercise.
+
