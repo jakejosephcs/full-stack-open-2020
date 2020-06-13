@@ -48,3 +48,7 @@ Depending on your solution you may see the following warning in your console:
 
 We will return to this warning in the next exercise.
 
+## 7.6: anecdotes and hooks step3
+If you see the warning in the console, make the necessary changes to get rid of the ```Invalid value for prop reset' on <input> tag``` console warning
+
+
