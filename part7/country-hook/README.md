@@ -20,3 +20,5 @@ The application is otherwise complete, but in this exercise you have to implemen
 
 Use the api endpoint https://restcountries.eu/#api-endpoints-full-name to fetch country details in a ```useEffect```-hook within your custom hook.
 
+## 7.8: ultimate hooks
+Complete in ```ultimate-hooks``` folder

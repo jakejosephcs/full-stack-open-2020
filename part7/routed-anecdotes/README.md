@@ -51,4 +51,8 @@ We will return to this warning in the next exercise.
 ## 7.6: anecdotes and hooks step3
 If you see the warning in the console, make the necessary changes to get rid of the ```Invalid value for prop reset' on <input> tag``` console warning
 
+## 7.7: country hook
+Continued in ```country-hook``` folder
 
+## 7.8: ultimate hooks
+Complete in ```ultimate-hooks``` folder
