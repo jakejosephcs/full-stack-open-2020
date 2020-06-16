@@ -1,10 +1,12 @@
 import axios from 'axios'
+import storage from '../utils/storage'
+
 const baseUrl = '/api/blogs'
 
-let token = null
-
-const setToken = (newToken) => {
-  token = `bearer ${newToken}`
+const getConfig = () => {
+  return {
+    headers: { Authorization: `bearer ${storage.loadUser().token}` },
+  }
 }
 
 const getAll = async () => {
@@ -12,33 +14,24 @@ const getAll = async () => {
   return request.data
 }
 
-const create = async (newObject) => {
-  const config = {
-    headers: { Authorization: token },
-  }
-
-  const response = await axios.post(baseUrl, newObject, config) // axios.post(url, data, config)
-  return response.data
+const create = async (blog) => {
+  const request = await axios.post(baseUrl, blog, getConfig()) // axios.post(url, data, config)
+  return request.data
 }
 
-const update = async (newObject) => {
-  const config = {
-    headers: { Authorization: token },
-  }
-
-  const response = await axios.put(`${baseUrl}/${newObject.id}`, newObject, config)
-  return response.data
+const update = async (blog) => {
+  const request = await axios.put(`${baseUrl}/${blog.id}`, blog, getConfig())
+  return request.data
 }
 
-const deleteBlog = async (blogToDelete) => {
-  const config = {
-    headers: { Authorization: token },
-  }
-
-  const response = await axios.delete(`${baseUrl}/${blogToDelete}`, config)
-
-  return response.data
+const deleteBlog = async (id) => {
+  const request = await axios.delete(`${baseUrl}/${id}`, getConfig())
+  return request.data
 }
 
+const comment = async (id, comment) => {
+  const request = await axios.post(`${baseUrl}/${id}/comments`, { comment }, getConfig())
+  return request.data
+}
 
-export default { getAll, setToken, create, update, deleteBlog }
+export default { getAll, create, update, deleteBlog, comment }

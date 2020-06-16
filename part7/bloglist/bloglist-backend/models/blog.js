@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 mongoose.set('useFindAndModify', false)
 
-const blogSchema = new mongoose.Schema({
+const blogSchema = mongoose.Schema({
     title: String,
     author: String,
     url: String,
@@ -10,7 +10,8 @@ const blogSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    comments: [ String ]
 })
 
 blogSchema.set('toJSON', {

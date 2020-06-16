@@ -1,40 +1,83 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Blog = ({
-  blog,
-  handleLikes,
-  currentUsersBlog,
-  handleRemove
-}) => {
-  const [show, setShow] = useState(false)
+import { useSelector, useDispatch } from 'react-redux'
+import { useParams, useHistory } from 'react-router-dom'
+import { likeBlog, removeBlog, commentBlog } from '../reducers/blogs'
 
-  const label = show ? 'hide' : 'view'
 
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5
+const Comments = ({ comments, handleComment }) => {
+  if ( comments.length === 0 ) {
+    return null
   }
 
+  const addComment = (event) => {
+    event.preventDefault()
+    const content = event.target.comment.value
+    handleComment(content)
+    event.target.comment.value = ''
+  }
 
   return(
-    <div style={blogStyle} className='blog'>
+    <div>
+      <h3>Comments</h3>
+      <form onSubmit={addComment}>
+        <input name="comment" />
+        <button type='submit'>Add comment</button>
+      </form>
+      {comments.map((c,i) =>
+        <p key={i}>{c}</p>
+      )}
+    </div>
+  )
+}
+
+
+const Blog = () => {
+  const id = useParams().id
+  const blog = useSelector(state => state.blogs.find(b => b.id === id))
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  if (!blog) {
+    return null
+  }
+
+  const own = user && user.username === blog.user.username
+
+  const handleLike = () => {
+    dispatch(likeBlog(blog))
+  }
+
+  const handleRemove = () => {
+    const ok = window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)
+    if (ok) {
+      dispatch(removeBlog(id))
+      history.push('/')
+    }
+  }
+
+  const handleComment = (comment) => {
+    dispatch(commentBlog(id, comment))
+  }
+
+  return(
+    <div className='blog'>
+      <h3>{blog.title} by {blog.author}</h3>
       <div>
-        <i>{blog.title}</i> by {blog.author} <button onClick={() => setShow(!show)}>{label}</button>
-      </div>
-      {show &&
-      <div>
-        <div>{blog.url}</div>
+        <div>
+          <a href={blog.url}>{blog.url}</a>
+        </div>
         <div>
           likes {blog.likes}
-          <button onClick={ () => handleLikes(blog.id) }>like</button>
+          <button onClick={handleLike}>like</button>
         </div>
-        <div>{blog.user.name}</div>
-        {currentUsersBlog && <button onClick={ () => handleRemove(blog.id) }>Remove</button>}
+        {own && <button onClick={handleRemove}>Remove</button>}
+        <Comments
+          comments={blog.comments}
+          handleComment={handleComment}
+        />
       </div>
-      }
     </div>
   )
 }
